@@ -1,0 +1,333 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="FB_DevModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Contact">
+          <Key>
+            <PropertyRef Name="ContactID" />
+          </Key>
+          <Property Name="ContactID" Type="int" Nullable="false" />
+          <Property Name="CompanyName" Type="nvarchar" MaxLength="100" />
+          <Property Name="Address1" Type="nvarchar" MaxLength="150" />
+          <Property Name="Address2" Type="nvarchar" MaxLength="100" />
+          <Property Name="Address3" Type="nvarchar" MaxLength="40" />
+          <Property Name="City" Type="nvarchar" MaxLength="50" />
+          <Property Name="State" Type="nvarchar" MaxLength="3" />
+          <Property Name="PostalCode" Type="nvarchar" MaxLength="12" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="25" />
+          <Property Name="Division" Type="nvarchar" MaxLength="3" />
+          <Property Name="DivisionDesc" Type="nvarchar" MaxLength="30" />
+          <Property Name="District" Type="nvarchar" MaxLength="3" />
+          <Property Name="DistrictDesc" Type="nvarchar" MaxLength="30" />
+          <Property Name="FamilyAff" Type="nvarchar" MaxLength="3" />
+          <Property Name="FamilyAffDesc" Type="nvarchar" MaxLength="30" />
+          <Property Name="PricingParent" Type="nvarchar" MaxLength="8" />
+          <Property Name="PricingParentName" Type="nvarchar" MaxLength="40" />
+          <Property Name="AcctRep" Type="nvarchar" MaxLength="3" />
+          <Property Name="AcctRepDesc" Type="nvarchar" MaxLength="30" />
+          <Property Name="RouteNumber" Type="int" />
+          <Property Name="Distributor" Type="int" />
+          <Property Name="DistributorName" Type="nvarchar" MaxLength="40" />
+          <Property Name="DeliveryMethod" Type="nvarchar" MaxLength="3" />
+          <Property Name="DeliveryDesc" Type="nvarchar" MaxLength="30" />
+          <Property Name="SearchType" Type="nvarchar" MaxLength="3" />
+          <Property Name="SearchDesc" Type="nvarchar" MaxLength="30" />
+          <Property Name="BusinessUnit" Type="nvarchar" MaxLength="12" />
+          <Property Name="DateCreated" Type="datetime" />
+          <Property Name="LastModified" Type="datetime" />
+          <Property Name="AreaCode" Type="nvarchar" MaxLength="6" />
+          <Property Name="ContactActive" Type="smallint" />
+          <Property Name="LongAddressNumber" Type="nvarchar" MaxLength="30" />
+          <Property Name="LastModifiedByFTP" Type="datetime" />
+          <Property Name="AuditFlow" Type="int" />
+          <Property Name="SendInvoiceTo" Type="int" />
+          <Property Name="FSMJDE" Type="int" />
+          <Property Name="FieldServiceManager" Type="nvarchar" MaxLength="50" />
+          <Property Name="ServiceLevelCode" Type="nvarchar" MaxLength="5" />
+          <Property Name="AnniversaryDate" Type="smalldatetime" />
+          <Property Name="TierDesc" Type="nvarchar" MaxLength="30" />
+          <Property Name="RemainingFreeCalls" Type="int" />
+          <Property Name="CCMJDE" Type="int" />
+          <Property Name="RCCMJDE" Type="int" />
+          <Property Name="CategoryCode" Type="nvarchar" MaxLength="3" />
+          <Property Name="OperatingUnit" Type="nvarchar" MaxLength="3" />
+          <Property Name="Route" Type="nvarchar" MaxLength="3" />
+          <Property Name="Branch" Type="nvarchar" MaxLength="3" />
+          <Property Name="1099Reporting" Type="nvarchar" MaxLength="3" />
+          <Property Name="Chain" Type="nvarchar" MaxLength="3" />
+          <Property Name="BrewmaticAgentCode" Type="nvarchar" MaxLength="3" />
+          <Property Name="NTR" Type="nvarchar" MaxLength="3" />
+          <Property Name="DelDayOrFOB" Type="nvarchar" MaxLength="3" />
+          <Property Name="RouteCode" Type="nvarchar" MaxLength="3" />
+          <Property Name="ZoneNumber" Type="nvarchar" MaxLength="3" />
+          <Property Name="MailingName" Type="nvarchar" MaxLength="40" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="MiddleName" Type="nvarchar" MaxLength="25" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="25" />
+          <Property Name="FBProviderID" Type="int" />
+          <Property Name="NOFBPSPEmails" Type="int" />
+          <Property Name="LastAutoEmail" Type="smalldatetime" />
+          <Property Name="CustomerRegion" Type="nvarchar" MaxLength="50" />
+          <Property Name="RegionNumber" Type="nvarchar" MaxLength="5" />
+          <Property Name="CustomerBranch" Type="nvarchar" MaxLength="50" />
+          <Property Name="PricingParentID" Type="nvarchar" MaxLength="20" />
+          <Property Name="PricingParentDesc" Type="nvarchar" MaxLength="255" />
+          <Property Name="LastSaleDate" Type="nvarchar" MaxLength="15" />
+          <Property Name="Email" Type="nvarchar" MaxLength="150" />
+          <Property Name="CustomerSpecialInstructions" Type="varchar(max)" />
+          <Property Name="PhoneWithAreaCode" Type="nvarchar" MaxLength="30" />
+          <Property Name="IsUnknownUser" Type="int" />
+          <Property Name="BillingCode" Type="varchar" MaxLength="5" />
+          <Property Name="FilterReplaced" Type="bit" />
+          <Property Name="FilterReplacedDate" Type="smalldatetime" />
+          <Property Name="NextFilterReplacementDate" Type="smalldatetime" />
+          <Property Name="SalesEmail" Type="nvarchar" MaxLength="150" />
+          <Property Name="ESMName" Type="varchar" MaxLength="255" />
+          <Property Name="ESMPhone" Type="varchar" MaxLength="50" />
+          <Property Name="ESMEmail" Type="varchar" MaxLength="100" />
+          <Property Name="RSMName" Type="varchar" MaxLength="255" />
+          <Property Name="RSMPhone" Type="varchar" MaxLength="50" />
+          <Property Name="RSMEmail" Type="varchar" MaxLength="100" />
+          <Property Name="CCMName" Type="varchar" MaxLength="255" />
+          <Property Name="CCMPhone" Type="varchar" MaxLength="50" />
+          <Property Name="CCMEmail" Type="varchar" MaxLength="100" />
+          <Property Name="DaysSinceLastSale" Type="varchar" MaxLength="10" />
+          <Property Name="ProfitabilityTier" Type="nvarchar" MaxLength="30" />
+          <Property Name="ContributionMargin" Type="nvarchar" MaxLength="50" />
+          <Property Name="NetSalesAmount" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="PaymentTerm" Type="nvarchar" MaxLength="30" />
+        </EntityType>
+        <EntityContainer Name="FB_DevModelStoreContainer">
+          <EntitySet Name="Contact" EntityType="Self.Contact" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="FB_DevModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="FBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Contacts" EntityType="FB_DevModel.Contact" />
+        </EntityContainer>
+        <EntityType Name="Contact">
+          <Key>
+            <PropertyRef Name="ContactID" />
+          </Key>
+          <Property Name="ContactID" Type="Int32" Nullable="false" />
+          <Property Name="CompanyName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Address1" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Address2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Address3" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="State" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="PostalCode" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="Division" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="DivisionDesc" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="District" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="DistrictDesc" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="FamilyAff" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="FamilyAffDesc" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="PricingParent" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="PricingParentName" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="AcctRep" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="AcctRepDesc" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="RouteNumber" Type="Int32" />
+          <Property Name="Distributor" Type="Int32" />
+          <Property Name="DistributorName" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="DeliveryMethod" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="DeliveryDesc" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="SearchType" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="SearchDesc" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="BusinessUnit" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="DateCreated" Type="DateTime" Precision="3" />
+          <Property Name="LastModified" Type="DateTime" Precision="3" />
+          <Property Name="AreaCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="ContactActive" Type="Int16" />
+          <Property Name="LongAddressNumber" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="LastModifiedByFTP" Type="DateTime" Precision="3" />
+          <Property Name="AuditFlow" Type="Int32" />
+          <Property Name="SendInvoiceTo" Type="Int32" />
+          <Property Name="FSMJDE" Type="Int32" />
+          <Property Name="FieldServiceManager" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ServiceLevelCode" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="AnniversaryDate" Type="DateTime" Precision="0" />
+          <Property Name="TierDesc" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="RemainingFreeCalls" Type="Int32" />
+          <Property Name="CCMJDE" Type="Int32" />
+          <Property Name="RCCMJDE" Type="Int32" />
+          <Property Name="CategoryCode" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="OperatingUnit" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="Route" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="Branch" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="C1099Reporting" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="Chain" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="BrewmaticAgentCode" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="NTR" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="DelDayOrFOB" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="RouteCode" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="ZoneNumber" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="MailingName" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MiddleName" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="FBProviderID" Type="Int32" />
+          <Property Name="NOFBPSPEmails" Type="Int32" />
+          <Property Name="LastAutoEmail" Type="DateTime" Precision="0" />
+          <Property Name="CustomerRegion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RegionNumber" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="CustomerBranch" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PricingParentID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="PricingParentDesc" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="LastSaleDate" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="CustomerSpecialInstructions" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="PhoneWithAreaCode" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="IsUnknownUser" Type="Int32" />
+          <Property Name="BillingCode" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="FilterReplaced" Type="Boolean" />
+          <Property Name="FilterReplacedDate" Type="DateTime" Precision="0" />
+          <Property Name="NextFilterReplacementDate" Type="DateTime" Precision="0" />
+          <Property Name="SalesEmail" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ESMName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ESMPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ESMEmail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="RSMName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="RSMPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RSMEmail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CCMName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="CCMPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CCMEmail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DaysSinceLastSale" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="ProfitabilityTier" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="ContributionMargin" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NetSalesAmount" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="PaymentTerm" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="FB_DevModelStoreContainer" CdmEntityContainer="FBEntities">
+          <EntitySetMapping Name="Contacts">
+            <EntityTypeMapping TypeName="FB_DevModel.Contact">
+              <MappingFragment StoreEntitySet="Contact">
+                <ScalarProperty Name="PaymentTerm" ColumnName="PaymentTerm" />
+                <ScalarProperty Name="NetSalesAmount" ColumnName="NetSalesAmount" />
+                <ScalarProperty Name="ContributionMargin" ColumnName="ContributionMargin" />
+                <ScalarProperty Name="ProfitabilityTier" ColumnName="ProfitabilityTier" />
+                <ScalarProperty Name="DaysSinceLastSale" ColumnName="DaysSinceLastSale" />
+                <ScalarProperty Name="CCMEmail" ColumnName="CCMEmail" />
+                <ScalarProperty Name="CCMPhone" ColumnName="CCMPhone" />
+                <ScalarProperty Name="CCMName" ColumnName="CCMName" />
+                <ScalarProperty Name="RSMEmail" ColumnName="RSMEmail" />
+                <ScalarProperty Name="RSMPhone" ColumnName="RSMPhone" />
+                <ScalarProperty Name="RSMName" ColumnName="RSMName" />
+                <ScalarProperty Name="ESMEmail" ColumnName="ESMEmail" />
+                <ScalarProperty Name="ESMPhone" ColumnName="ESMPhone" />
+                <ScalarProperty Name="ESMName" ColumnName="ESMName" />
+                <ScalarProperty Name="SalesEmail" ColumnName="SalesEmail" />
+                <ScalarProperty Name="NextFilterReplacementDate" ColumnName="NextFilterReplacementDate" />
+                <ScalarProperty Name="FilterReplacedDate" ColumnName="FilterReplacedDate" />
+                <ScalarProperty Name="FilterReplaced" ColumnName="FilterReplaced" />
+                <ScalarProperty Name="BillingCode" ColumnName="BillingCode" />
+                <ScalarProperty Name="IsUnknownUser" ColumnName="IsUnknownUser" />
+                <ScalarProperty Name="PhoneWithAreaCode" ColumnName="PhoneWithAreaCode" />
+                <ScalarProperty Name="CustomerSpecialInstructions" ColumnName="CustomerSpecialInstructions" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="LastSaleDate" ColumnName="LastSaleDate" />
+                <ScalarProperty Name="PricingParentDesc" ColumnName="PricingParentDesc" />
+                <ScalarProperty Name="PricingParentID" ColumnName="PricingParentID" />
+                <ScalarProperty Name="CustomerBranch" ColumnName="CustomerBranch" />
+                <ScalarProperty Name="RegionNumber" ColumnName="RegionNumber" />
+                <ScalarProperty Name="CustomerRegion" ColumnName="CustomerRegion" />
+                <ScalarProperty Name="LastAutoEmail" ColumnName="LastAutoEmail" />
+                <ScalarProperty Name="NOFBPSPEmails" ColumnName="NOFBPSPEmails" />
+                <ScalarProperty Name="FBProviderID" ColumnName="FBProviderID" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="MailingName" ColumnName="MailingName" />
+                <ScalarProperty Name="ZoneNumber" ColumnName="ZoneNumber" />
+                <ScalarProperty Name="RouteCode" ColumnName="RouteCode" />
+                <ScalarProperty Name="DelDayOrFOB" ColumnName="DelDayOrFOB" />
+                <ScalarProperty Name="NTR" ColumnName="NTR" />
+                <ScalarProperty Name="BrewmaticAgentCode" ColumnName="BrewmaticAgentCode" />
+                <ScalarProperty Name="Chain" ColumnName="Chain" />
+                <ScalarProperty Name="C1099Reporting" ColumnName="1099Reporting" />
+                <ScalarProperty Name="Branch" ColumnName="Branch" />
+                <ScalarProperty Name="Route" ColumnName="Route" />
+                <ScalarProperty Name="OperatingUnit" ColumnName="OperatingUnit" />
+                <ScalarProperty Name="CategoryCode" ColumnName="CategoryCode" />
+                <ScalarProperty Name="RCCMJDE" ColumnName="RCCMJDE" />
+                <ScalarProperty Name="CCMJDE" ColumnName="CCMJDE" />
+                <ScalarProperty Name="RemainingFreeCalls" ColumnName="RemainingFreeCalls" />
+                <ScalarProperty Name="TierDesc" ColumnName="TierDesc" />
+                <ScalarProperty Name="AnniversaryDate" ColumnName="AnniversaryDate" />
+                <ScalarProperty Name="ServiceLevelCode" ColumnName="ServiceLevelCode" />
+                <ScalarProperty Name="FieldServiceManager" ColumnName="FieldServiceManager" />
+                <ScalarProperty Name="FSMJDE" ColumnName="FSMJDE" />
+                <ScalarProperty Name="SendInvoiceTo" ColumnName="SendInvoiceTo" />
+                <ScalarProperty Name="AuditFlow" ColumnName="AuditFlow" />
+                <ScalarProperty Name="LastModifiedByFTP" ColumnName="LastModifiedByFTP" />
+                <ScalarProperty Name="LongAddressNumber" ColumnName="LongAddressNumber" />
+                <ScalarProperty Name="ContactActive" ColumnName="ContactActive" />
+                <ScalarProperty Name="AreaCode" ColumnName="AreaCode" />
+                <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="BusinessUnit" ColumnName="BusinessUnit" />
+                <ScalarProperty Name="SearchDesc" ColumnName="SearchDesc" />
+                <ScalarProperty Name="SearchType" ColumnName="SearchType" />
+                <ScalarProperty Name="DeliveryDesc" ColumnName="DeliveryDesc" />
+                <ScalarProperty Name="DeliveryMethod" ColumnName="DeliveryMethod" />
+                <ScalarProperty Name="DistributorName" ColumnName="DistributorName" />
+                <ScalarProperty Name="Distributor" ColumnName="Distributor" />
+                <ScalarProperty Name="RouteNumber" ColumnName="RouteNumber" />
+                <ScalarProperty Name="AcctRepDesc" ColumnName="AcctRepDesc" />
+                <ScalarProperty Name="AcctRep" ColumnName="AcctRep" />
+                <ScalarProperty Name="PricingParentName" ColumnName="PricingParentName" />
+                <ScalarProperty Name="PricingParent" ColumnName="PricingParent" />
+                <ScalarProperty Name="FamilyAffDesc" ColumnName="FamilyAffDesc" />
+                <ScalarProperty Name="FamilyAff" ColumnName="FamilyAff" />
+                <ScalarProperty Name="DistrictDesc" ColumnName="DistrictDesc" />
+                <ScalarProperty Name="District" ColumnName="District" />
+                <ScalarProperty Name="DivisionDesc" ColumnName="DivisionDesc" />
+                <ScalarProperty Name="Division" ColumnName="Division" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Address3" ColumnName="Address3" />
+                <ScalarProperty Name="Address2" ColumnName="Address2" />
+                <ScalarProperty Name="Address1" ColumnName="Address1" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="ContactID" ColumnName="ContactID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

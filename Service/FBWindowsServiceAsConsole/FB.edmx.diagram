@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="cf1cd1c90d7f4ec284aa6e28f4919772" Name="Diagram1" ZoomLevel="29">
+        <EntityTypeShape EntityType="WOScheduleEventService.AllFBStatu" Width="1.5" PointX="0.75" PointY="8.375" />
+        <EntityTypeShape EntityType="WOScheduleEventService.AMPSList" Width="1.5" PointX="12.75" PointY="4.375" />
+        <EntityTypeShape EntityType="WOScheduleEventService.Application" Width="1.5" PointX="8" PointY="16.875" />
+        <EntityTypeShape EntityType="WOScheduleEventService.BrandName" Width="1.5" PointX="0.75" PointY="12.375" />
+        <EntityTypeShape EntityType="WOScheduleEventService.CallTypeSymptomSolutionMaster" Width="1.5" PointX="12.75" PointY="7.375" />
+        <EntityTypeShape EntityType="WOScheduleEventService.Category" Width="1.5" PointX="12.75" PointY="10.375" />
+        <EntityTypeShape EntityType="WOScheduleEventService.Contact" Width="1.5" PointX="12.75" PointY="13.375" />
+        <EntityTypeShape EntityType="WOScheduleEventService.Contact_PMUploadsALL" Width="1.5" PointX="14.75" PointY="4.375" />
+        <EntityTypeShape EntityType="WOScheduleEventService.Contingent" Width="1.5" PointX="14.75" PointY="11.375" />
+        <EntityTypeShape EntityType="WOScheduleEventService.ContingentDetail" Width="1.5" PointX="14.75" PointY="14.375" />
+        <EntityTypeShape EntityType="WOScheduleEventService.ElectricalPhaseList" Width="1.5" PointX="14.75" PointY="18.375" />
+        <EntityTypeShape EntityType="WOScheduleEventService.EquipType" Width="1.5" PointX="16.75" PointY="4.375" />
+        <EntityTypeShape EntityType="WOScheduleEventService.Erf" Width="1.5" PointX="0.75" PointY="19.75" />
+        <EntityTypeShape EntityType="WOScheduleEventService.ERFBranchDetail" Width="1.5" PointX="16.75" PointY="7.375" />
+        <EntityTypeShape EntityType="WOScheduleEventService.ERFOrderType" Width="1.5" PointX="16.75" PointY="11.375" />
+        <EntityTypeShape EntityType="WOScheduleEventService.ErfWorkorderLog" Width="1.5" PointX="16.75" PointY="14.375" />
+        <EntityTypeShape EntityType="WOScheduleEventService.ESMCCMRSMEscalation" Width="1.5" PointX="16.75" PointY="17.375" />
+        <EntityTypeShape EntityType="WOScheduleEventService.ESMDSMRSM" Width="1.5" PointX="18.75" PointY="4.375" />
+        <EntityTypeShape EntityType="WOScheduleEventService.EstimateEscalation" Width="1.5" PointX="18.75" PointY="10.375" />
+        <EntityTypeShape EntityType="WOScheduleEventService.FBActivityLog" Width="1.5" PointX="10.25" PointY="13.75" />
+        <EntityTypeShape EntityType="WOScheduleEventService.FBBillableFeed" Width="1.5" PointX="18.75" PointY="13.375" />
+        <EntityTypeShape EntityType="WOScheduleEventService.FbBillableSKU" Width="1.5" PointX="18.75" PointY="16.375" />
+        <EntityTypeShape EntityType="WOScheduleEventService.FBCallReason" Width="1.5" PointX="18.75" PointY="19.375" />
+        <EntityTypeShape EntityType="WOScheduleEventService.FBCBE" Width="1.5" PointX="14.75" PointY="23.375" />
+        <EntityTypeShape EntityType="WOScheduleEventService.FBClosurePart" Width="1.5" PointX="20.75" PointY="4.375" />
+        <EntityTypeShape EntityType="WOScheduleEventService.FBCustomerNote" Width="1.5" PointX="10.25" PointY="16.5" />
+        <EntityTypeShape EntityType="WOScheduleEventService.FBCustomerServiceDistribution" Width="1.5" PointX="20.75" PointY="8.375" />
+        <EntityTypeShape EntityType="WOScheduleEventService.FBEquipment" Width="1.5" PointX="5.75" PointY="24.375" />
+        <EntityTypeShape EntityType="WOScheduleEventService.FBERFEquipment" Width="1.5" PointX="3" PointY="0.75" />
+        <EntityTypeShape EntityType="WOScheduleEventService.FBERFExpendable" Width="1.5" PointX="3" PointY="42.25" />
+        <EntityTypeShape EntityType="WOScheduleEventService.FBERFTransactionType" Width="1.5" PointX="7.75" PointY="24.375" />
+        <EntityTypeShape EntityType="WOScheduleEventService.FBExpendable" Width="1.5" PointX="20.75" PointY="13.375" />
+        <EntityTypeShape EntityType="WOScheduleEventService.FBFunctionality" Width="1.5" PointX="9.75" PointY="24.375" />
+        <EntityTypeShape EntityType="WOScheduleEventService.FbPrimaryTechnician" Width="1.5" PointX="20.75" PointY="16.375" />
+        <EntityTypeShape EntityType="WOScheduleEventService.FBReport" Width="1.5" PointX="8" PointY="20" />
+        <EntityTypeShape EntityType="WOScheduleEventService.FBRoleFunction" Width="1.5" PointX="20.75" PointY="19.375" />
+        <EntityTypeShape EntityType="WOScheduleEventService.FbRole" Width="1.5" PointX="5.75" PointY="5.625" />
+        <EntityTypeShape EntityType="WOScheduleEventService.FBSKU" Width="1.5" PointX="16.75" PointY="24.375" />
+        <EntityTypeShape EntityType="WOScheduleEventService.FbUserMaster" Width="1.5" PointX="8" PointY="5.875" />
+        <EntityTypeShape EntityType="WOScheduleEventService.FBUserReport" Width="1.5" PointX="10.25" PointY="9.5" />
+        <EntityTypeShape EntityType="WOScheduleEventService.FbWorkOrderSKU" Width="1.5" PointX="18.75" PointY="24.375" />
+        <EntityTypeShape EntityType="WOScheduleEventService.FeastMovement" Width="1.5" PointX="20.75" PointY="23.375" />
+        <EntityTypeShape EntityType="WOScheduleEventService.HolidayList" Width="1.5" PointX="22.75" PointY="4.375" />
+        <EntityTypeShape EntityType="WOScheduleEventService.IndexCounter" Width="1.5" PointX="22.75" PointY="7.375" />
+        <EntityTypeShape EntityType="WOScheduleEventService.Invoice" Width="1.5" PointX="22.75" PointY="10.375" />
+        <EntityTypeShape EntityType="WOScheduleEventService.JDEPaymentTerm" Width="1.5" PointX="22.75" PointY="19.375" />
+        <EntityTypeShape EntityType="WOScheduleEventService.NEMANumberList" Width="1.5" PointX="22.75" PointY="22.375" />
+        <EntityTypeShape EntityType="WOScheduleEventService.NoAutoEmailZipCode" Width="1.5" PointX="22.75" PointY="25.375" />
+        <EntityTypeShape EntityType="WOScheduleEventService.NoAutomaticEmailContract" Width="1.5" PointX="5.75" PointY="27.375" />
+        <EntityTypeShape EntityType="WOScheduleEventService.NonFBCustomer" Width="1.5" PointX="7.75" PointY="27.375" />
+        <EntityTypeShape EntityType="WOScheduleEventService.NonSerialized" Width="1.5" PointX="3" PointY="73.875" />
+        <EntityTypeShape EntityType="WOScheduleEventService.NonServiceworkorder" Width="1.5" PointX="3.75" PointY="8.5" />
+        <EntityTypeShape EntityType="WOScheduleEventService.NotesHistory" Width="1.5" PointX="6" PointY="43.125" />
+        <EntityTypeShape EntityType="WOScheduleEventService.OnCallGroup" Width="1.5" PointX="9.75" PointY="27.375" />
+        <EntityTypeShape EntityType="WOScheduleEventService.PhoneSolveLog" Width="1.5" PointX="3" PointY="38.875" />
+        <EntityTypeShape EntityType="WOScheduleEventService.Privilege" Width="1.5" PointX="8" PointY="3.5" />
+        <EntityTypeShape EntityType="WOScheduleEventService.RemovalSurvey" Width="1.5" PointX="18.75" PointY="27.375" />
+        <EntityTypeShape EntityType="WOScheduleEventService.Sku" Width="1.5" PointX="24.75" PointY="4.375" />
+        <EntityTypeShape EntityType="WOScheduleEventService.Solution" Width="1.5" PointX="24.75" PointY="9.375" />
+        <EntityTypeShape EntityType="WOScheduleEventService.State" Width="1.5" PointX="24.75" PointY="12.375" />
+        <EntityTypeShape EntityType="WOScheduleEventService.Symptom" Width="1.5" PointX="24.75" PointY="15.375" />
+        <EntityTypeShape EntityType="WOScheduleEventService.SystemInfo" Width="1.5" PointX="24.75" PointY="18.375" />
+        <EntityTypeShape EntityType="WOScheduleEventService.TECH_HIERARCHY" Width="1.5" PointX="24.75" PointY="21.375" />
+        <EntityTypeShape EntityType="WOScheduleEventService.TechOnCall" Width="1.5" PointX="20.75" PointY="28.375" />
+        <EntityTypeShape EntityType="WOScheduleEventService.TechSchedule" Width="1.5" PointX="3" PointY="33.75" />
+        <EntityTypeShape EntityType="WOScheduleEventService.ThirdpartyConMaintenanceZonerate" Width="1.5" PointX="14.75" PointY="29.375" />
+        <EntityTypeShape EntityType="WOScheduleEventService.ThirdPartyContractMaintenance" Width="1.5" PointX="26.75" PointY="4.375" />
+        <EntityTypeShape EntityType="WOScheduleEventService.TMP_BlackBerry_NSR" Width="1.5" PointX="5.75" PointY="30.375" />
+        <EntityTypeShape EntityType="WOScheduleEventService.TMP_BlackBerry_SCFAssetInfo" Width="1.5" PointX="26.75" PointY="10.375" />
+        <EntityTypeShape EntityType="WOScheduleEventService.TMP_BlackBerry_SCFPartsInfo" Width="1.5" PointX="7.75" PointY="30.375" />
+        <EntityTypeShape EntityType="WOScheduleEventService.TmpInvTransfer" Width="1.5" PointX="9.75" PointY="30.375" />
+        <EntityTypeShape EntityType="WOScheduleEventService.TmpinvTransferNonserialized" Width="1.5" PointX="26.75" PointY="17.375" />
+        <EntityTypeShape EntityType="WOScheduleEventService.TmpinvTransferSerialized" Width="1.5" PointX="26.75" PointY="21.375" />
+        <EntityTypeShape EntityType="WOScheduleEventService.UnKnownCustomerLog" Width="1.5" PointX="26.75" PointY="26.375" />
+        <EntityTypeShape EntityType="WOScheduleEventService.UserApplication" Width="1.5" PointX="10.25" PointY="6.375" />
+        <EntityTypeShape EntityType="WOScheduleEventService.UserProfile" Width="1.5" PointX="26.75" PointY="29.375" />
+        <EntityTypeShape EntityType="WOScheduleEventService.UserType" Width="1.5" PointX="5.75" PointY="9.75" />
+        <EntityTypeShape EntityType="WOScheduleEventService.Vendor" Width="1.5" PointX="16.75" PointY="31.375" />
+        <EntityTypeShape EntityType="WOScheduleEventService.WaterLineList" Width="1.5" PointX="28.75" PointY="4.375" />
+        <EntityTypeShape EntityType="WOScheduleEventService.WorkOrder" Width="1.5" PointX="0.75" PointY="32.75" />
+        <EntityTypeShape EntityType="WOScheduleEventService.WorkOrderBrand" Width="1.5" PointX="3" PointY="64" />
+        <EntityTypeShape EntityType="WOScheduleEventService.WorkorderDetail" Width="1.5" PointX="3" PointY="17.75" />
+        <EntityTypeShape EntityType="WOScheduleEventService.WorkorderEquipment" Width="1.5" PointX="3" PointY="66.625" />
+        <EntityTypeShape EntityType="WOScheduleEventService.WorkorderEquipmentRequested" Width="1.5" PointX="3" PointY="79.125" />
+        <EntityTypeShape EntityType="WOScheduleEventService.WorkorderImage" Width="1.5" PointX="8.25" PointY="54.625" />
+        <EntityTypeShape EntityType="WOScheduleEventService.WorkorderInstallationSurvey" Width="1.5" PointX="5.25" PointY="51.125" />
+        <EntityTypeShape EntityType="WOScheduleEventService.WorkorderNonAudit" Width="1.5" PointX="3" PointY="60.375" />
+        <EntityTypeShape EntityType="WOScheduleEventService.WorkorderPart" Width="1.5" PointX="3" PointY="29.125" />
+        <EntityTypeShape EntityType="WOScheduleEventService.WorkorderReasonlog" Width="1.5" PointX="3" PointY="25.25" />
+        <EntityTypeShape EntityType="WOScheduleEventService.WorkorderSavedSearch" Width="1.5" PointX="28.75" PointY="7.375" />
+        <EntityTypeShape EntityType="WOScheduleEventService.WorkorderSchedule" Width="1.5" PointX="3" PointY="52" />
+        <EntityTypeShape EntityType="WOScheduleEventService.WorkorderServiceClaim" Width="1.5" PointX="5.25" PointY="76.625" />
+        <EntityTypeShape EntityType="WOScheduleEventService.WorkorderStatusLog" Width="1.5" PointX="3" PointY="14.75" />
+        <EntityTypeShape EntityType="WOScheduleEventService.WorkorderType" Width="1.5" PointX="28.75" PointY="15.375" />
+        <EntityTypeShape EntityType="WOScheduleEventService.ZonePriority" Width="1.5" PointX="28.75" PointY="18.375" />
+        <EntityTypeShape EntityType="WOScheduleEventService.FBReport1" Width="1.5" PointX="28.75" PointY="25.375" />
+        <EntityTypeShape EntityType="WOScheduleEventService.PMUploads_All" Width="1.5" PointX="9.75" PointY="33.375" />
+        <EntityTypeShape EntityType="WOScheduleEventService.TMP_BlackBerry_SCFInvoiceInfo" Width="1.5" PointX="11.75" PointY="33.375" />
+        <EntityTypeShape EntityType="WOScheduleEventService.Zip" Width="1.5" PointX="13.75" PointY="33.375" />
+        <EntityTypeShape EntityType="WOScheduleEventService.ZoneZip" Width="1.5" PointX="18.75" PointY="33.375" />
+        <EntityTypeShape EntityType="WOScheduleEventService.v_Contact" Width="1.5" PointX="20.75" PointY="33.375" />
+        <EntityTypeShape EntityType="WOScheduleEventService.v_ContactServiceHistory" Width="1.5" PointX="28.75" PointY="33.375" />
+        <EntityTypeShape EntityType="WOScheduleEventService.V_EquipmentCount" Width="1.5" PointX="30.75" PointY="4.375" />
+        <AssociationConnector Association="WOScheduleEventService.FK_UserApplication_Application" />
+        <AssociationConnector Association="WOScheduleEventService.FK_FBERFEquipment_Erf" />
+        <AssociationConnector Association="WOScheduleEventService.FK_FBERFExpendable_FBERFExpendable" />
+        <AssociationConnector Association="WOScheduleEventService.FK_FBActivityLog_FbUserMaster" />
+        <AssociationConnector Association="WOScheduleEventService.FK_FBCustomerNotes_FbUserMaster" />
+        <AssociationConnector Association="WOScheduleEventService.FK_FBERFExpendable_WorkOrder" />
+        <AssociationConnector Association="WOScheduleEventService.FK_FBUserReports_FBReports" />
+        <AssociationConnector Association="WOScheduleEventService.FK__FbUserMas__RoleI__4589517F" />
+        <AssociationConnector Association="WOScheduleEventService.FK_FBReports_FbUserMaster" />
+        <AssociationConnector Association="WOScheduleEventService.FK_FbUserMaster_UserType" />
+        <AssociationConnector Association="WOScheduleEventService.FK_UserApplication_FbUserMaster" />
+        <AssociationConnector Association="WOScheduleEventService.FK__NonSerial__Worko__607251E5" />
+        <AssociationConnector Association="WOScheduleEventService.FK_NotesHistory_NonServiceworkorder" />
+        <AssociationConnector Association="WOScheduleEventService.FK__NotesHist__Worko__3493CFA7" />
+        <AssociationConnector Association="WOScheduleEventService.FK__PhoneSolv__Worko__3587F3E0" />
+        <AssociationConnector Association="WOScheduleEventService.FK_UserApplication_Privilege1" />
+        <AssociationConnector Association="WOScheduleEventService.FK__TechSched__WorkO__6442E2C9" />
+        <AssociationConnector Association="WOScheduleEventService.FK__Workorder__Worko__4C6B5938" />
+        <AssociationConnector Association="WOScheduleEventService.FK__Workorder__Worko__4D5F7D71" />
+        <AssociationConnector Association="WOScheduleEventService.FK__Workorder__Worko__4D5F7D72" />
+        <AssociationConnector Association="WOScheduleEventService.FK__Workorder__Worko__4E53A1AA" />
+        <AssociationConnector Association="WOScheduleEventService.FK__Workorder__Worko__4F47C5E3" />
+        <AssociationConnector Association="WOScheduleEventService.FK__Workorder__Worko__503BEA1C" />
+        <AssociationConnector Association="WOScheduleEventService.FK__Workorder__Worko__51300E55" />
+        <AssociationConnector Association="WOScheduleEventService.FK__Workorder__Worko__5224328E" />
+        <AssociationConnector Association="WOScheduleEventService.FK__Workorder__Worko__58D1301D" />
+        <AssociationConnector Association="WOScheduleEventService.FK__WorkOrder__Worko__681373AD" />
+        <AssociationConnector Association="WOScheduleEventService.FK__Workorder__workorderstatuslog" />
+        <AssociationConnector Association="WOScheduleEventService.FK__Workorder__Asset__0E6E26BF" />
+        <AssociationConnector Association="WOScheduleEventService.FK__Workorder__Asset__6BE40491" />
+        <AssociationConnector Association="WOScheduleEventService.FK__Workorder__Asset__73852659" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

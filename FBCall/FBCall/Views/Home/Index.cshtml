@@ -1,0 +1,109 @@
+﻿@model FBCall.Models.CustomerModel
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<script type="text/javascript">
+    $( document ).ready( function ()
+    {
+        $( '#IdSubmit' ).attr( 'disabled', true );
+        $( '#CustomerId' ).keyup( function ()
+        {
+            if ( $( this ).val().length != 0 )
+                $( '#IdSubmit' ).attr( 'disabled', false );
+            else
+                $( '#IdSubmit' ).attr( 'disabled', true );
+        } )
+
+        $( "#IdSubmit" ).click( function ( e )
+        {
+            if (IsValidCustomer() == true) {
+                GetUserNotes();
+                e.preventDefault();
+            }
+          
+        } );
+    } );
+
+    function IsValidCustomer() {
+        if ($("#CustomerId").length) {
+            if ($("#CustomerId").val().length >= 10) {
+                return false;
+            }
+            else {
+                return true;
+            }
+
+        }
+    }
+    function GetUserNotes()
+    {
+        $(".modal").show();
+        var customerId = $( '#CustomerId' ).val();
+        var submittedBy = $( '#SubmittedBy' ).val();
+        $.ajax( {
+            type: 'GET',
+            url: "@Url.Action("IsCustomerExist", HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString())",
+            data: { customerId: customerId, userName: submittedBy.trim() },
+            contentType: "application/json",
+            success: function ( response )
+            {
+                if ( response.message !=undefined && response.message != '' )
+                {
+                    AlertPopup("|" + response.message);
+                    $(".modal").hide();
+                }
+                else
+                {
+                    //var url = "/AutoCallGenerate/WorkOrder?customerId=" + customerId;
+                    window.location.href = response.Url;
+                }
+
+            },
+            error: function ( reponse )
+            {
+            }
+        } );
+    }
+
+</script>
+@using (Html.BeginForm())
+{
+    <section class="well">
+        <div class="row top-info">
+            <div class="col-xs-12 col-sm-4 col-md-3" style="float:right;">
+                <b>Contact: </b> 877-322-6898
+            </div>
+        </div>
+    </section>
+
+    <div class="col-md-12">
+        <div class="col-sm-6-o">
+            <span class="col-md-2 required">Submitted By:</span>
+            <div class="col-md-2">
+                <div class="form-group">
+                    @Html.EditorFor(model => model.SubmittedBy, new { htmlAttributes = new { type = "string", @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.SubmittedBy, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6-o">
+            <span class="col-md-2 required">Account Number:</span>
+            <div class="col-md-2">
+                <div class="form-group">
+                    @*@Html.TextBox("CustomerId", "", new { type = "number", min = 0, max = 10, Value = "", @class = "form-control" })*@
+                    @Html.EditorFor(model => model.CustomerId, new { htmlAttributes = new { type = "number", @class = "form-control"} })
+                    @Html.ValidationMessageFor(model => model.CustomerId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="col-md-3">
+                <button id="IdSubmit" type="submit" class="btn btn-primary" style="float:left;">Submit</button>
+            </div>
+            <div class="col-md-1">
+
+            </div>
+
+        </div>
+    </div>
+}

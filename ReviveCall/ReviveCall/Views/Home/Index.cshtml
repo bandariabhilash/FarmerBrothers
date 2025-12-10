@@ -1,0 +1,301 @@
+﻿@model ReviveCall.Models.CustomerServiceModel
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<script type="text/javascript">
+$(document).ready(function(){
+
+    $("form").submit(function(event){
+        var callreason = $('#CallReason').val();
+        var customername = $('#CustomerName').val();
+        var address1 = $('#Address1').val();
+        var address2 = $('#address2').val();
+        var city = $('#City').val();
+        var state = $('#State').val();
+        var postalcode = $('#PostalCode').val();
+        var maincontactname = $('#MainContactName').val();
+        var phone = $('#PhoneNumber').val();
+        var email = $('#Email').val();
+        var comments = $('#Comments').val();
+
+        var Message = "Please Enter ";
+        var isValid = true;
+
+        if(callreason == "-1")
+        {
+            Message += " CallReason;";
+            isValid = false;
+        }
+        if(customername == "")
+        {
+            Message += " CustomerName;";
+            isValid = false;
+        }
+         if(address1 == "")
+        {
+            Message += " Address1;";
+            isValid = false;
+        }
+        if(address2 == "")
+        {
+            Message += " Address2;";
+            isValid = false;
+        }
+        if(city == "")
+        {
+            Message += " City;";
+            isValid = false;
+        }
+         if(state == "")
+        {
+            Message += " State;";
+            isValid = false;
+        }
+         if(postalcode == "")
+        {
+            Message += " PostalCode;";
+            isValid = false;
+        }
+         if(maincontactname == "")
+        {
+            Message += " MainContactName;";
+            isValid = false;
+        }
+         if(phone == "")
+        {
+            Message += " PhoneNumber;";
+            isValid = false;
+        }
+         if(email == "")
+        {
+            Message += " Email;";
+            isValid = false;
+        }
+         if(comments == "")
+        {
+            Message += " Comments;";
+            isValid = false;
+        }
+
+        if(isValid)
+        {
+            var $this = $( this );
+            var frmValues = $this.serialize();
+            $.ajax({
+                type: $this.attr('method'),
+                url: "@Url.Action("SaveNonServiceEvent", "Home")",
+                data: frmValues,
+                async: false
+            }).done(function(response)
+            {
+                if (response != null && response.success == true)
+                {
+                    $(':input','form')
+                            .not(':button, :submit, :reset, :hidden')
+                            .val('')
+                    $('#CallReason').val('-1');
+                    $('#State').val('-1');
+
+                    AlertPopup(response.message);
+                    event.preventDefault();
+                }
+                else
+                {
+                    AlertPopup("|There is a problem in Customer Service Creation! Please contact support.");
+                    event.preventDefault();
+                }
+            });
+        }
+        else
+        {
+            AlertPopup(Message);
+            event.preventDefault();
+        }
+    });
+
+    $("#IdClear").on("click", function(e){
+        e.preventDefault();
+        $(':input','form')
+                .not(':button, :submit, :reset, :hidden')
+                .val('')
+        $('#CallReason').val('-1');
+        $('#State').val('-1');
+    });
+
+});
+
+
+</script>
+
+@using (Html.BeginForm())
+{
+    <div class="col-md-12" style="padding-top: 20px;padding-bottom: 50px;">
+        <div class="col-sm-12 col-md-6 col-lg-4">
+            <span class="col-lg-6 required">Call Reason:</span>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    @Html.DropDownListFor(m => m.CallReason, new SelectList(Model.CallReasonList, "SourceCode", "Description"), new { @class = "form-control WorkOrderFields" })
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-md-6 col-lg-4">
+            <span class="col-md-6 required">Customer Name:</span>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    @Html.EditorFor(model => model.CustomerName, new { htmlAttributes = new { type = "string", @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.CustomerName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-md-6 col-lg-4">
+            <span class="col-md-6 required">Address1:</span>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    @Html.EditorFor(model => model.Address1, new { htmlAttributes = new { type = "string", @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Address1, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-md-6 col-lg-4">
+            <span class="col-md-6 required">Address2:</span>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    @Html.EditorFor(model => model.Address2, new { htmlAttributes = new { type = "string", @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Address2, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-md-6 col-lg-4">
+            <span class="col-md-6 required">City:</span>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    @Html.EditorFor(model => model.City, new { htmlAttributes = new { type = "string", @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.City, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-md-6 col-lg-4">
+            <span class="col-md-6 required">State:</span>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    @Html.DropDownListFor(m => m.State, new SelectList(Model.StateList, "StateCode", "StateName"), new { @class = "form-control WorkOrderFields" })
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-md-6 col-lg-4">
+            <span class="col-md-6 required">Postal Code:</span>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    @Html.EditorFor(model => model.PostalCode, new { htmlAttributes = new { type = "string", @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.PostalCode, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-md-6 col-lg-4">
+            <span class="col-md-6 required">Main Contact Name:</span>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    @Html.EditorFor(model => model.MainContactName, new { htmlAttributes = new { type = "string", @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.MainContactName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-md-6 col-lg-4">
+            <span class="col-md-6 required">Phone Number:</span>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { type = "string", @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-md-6 col-lg-4">
+            <span class="col-md-6 required">Email Address:</span>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { type = "string", @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-md-6 col-lg-4">
+            <span class="col-md-6 required">Comments:</span>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    @Html.TextAreaFor(model => model.Comments, new { htmlAttributes = new { type = "string", @class = "form-control" } })
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-md-6 col-lg-4">
+            <button id="IdSubmit" type="submit" class="btn btn-primary" style="background-color:#000000; border-color:#ffffff;">Submit</button>
+            <button id="IdClear" class="btn btn-primary" style="background-color:#b10505; border-color:#ffffff;">Clear</button>
+        </div>
+    </div>
+}
+
+
+    @*<div class="container" style="padding-top: 40px;">
+            <div class="formsucc" style="display:none;">Form Submited Successfully.</div>
+            <form action="" name="registration" method="post">
+                <div class="col-xs-12 col-sm-12 col-md-5" style="float: none;margin: 0 auto;">
+                    <div class="form-group">
+                        <span class="col-md-6 required">Call Reason:</span><br />
+                        @Html.DropDownListFor(m => m.CallReason, new SelectList(Model.CallReasonList, "SourceCode", "Description"), new { @style = "max-width:270px", @class = "form-control WorkOrderFields" })
+
+                    </div>
+                    <div class="form-group">
+                        <label>Customer Name: <span>*</span></label>
+                        <input class="form-control" id="CustomerName" placeholder="Enter Customer Name" name="CustomerName">
+                    </div>
+                    <div class="form-group">
+                        <label>Address1: <span>*</span></label>
+                        <input class="form-control" id="Address1" placeholder="Enter Address1" name="Address1">
+                    </div>
+                    <div class="form-group">
+                        <label>Address2:</label>
+                        <input class="form-control" id="Address2" placeholder="Enter Address2" name="Address2">
+                    </div>
+                    <div class="form-group">
+                        <label>City: <span>*</span></label>
+                        <input class="form-control" id="City" placeholder="Enter City" name="City">
+                    </div>
+                    <div class="form-group">
+                        <span class="col-md-6 required">State:</span><br />
+                        @Html.DropDownListFor(m => m.State, new SelectList(Model.StateList, "StateCode", "StateName"), new { @style = "max-width:270px", @class = "form-control WorkOrderFields" })
+                    </div>
+                    <div class="form-group">
+                        <label>Zip Code: <span>*</span></label>
+                        <input class="form-control" id="Zip" placeholder="Enter ZipCode" name="Zip">
+                    </div>
+                    <div class="form-group">
+                        <label>Main Contact Name: <span>*</span></label>
+                        <input class="form-control" id="ContactName" placeholder="Enter Main Contact Name" name="ContactName">
+                    </div>
+                    <div class="form-group">
+                        <label>Phone Number: <span>*</span></label>
+                        <input class="form-control" id="PhoneNumber" placeholder="Enter Phone Number" name="PhoneNumber">
+                    </div>
+                    <div class="form-group">
+                        <label>Email Address: <span>*</span></label>
+                        <input class="form-control" id="EmailAddress" placeholder="Enter Email Address" name="EmailAddress">
+                    </div>
+                    <div class="form-group">
+                        <label>Comments: <span>*</span></label>
+                        <textarea class="form-control" id="Comments" name="Comments"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="margin-bottom:40px; background-color:#AD0F1A; float: right; padding: 5px 25px;">Submit</button>
+                </div>
+            </form>
+        </div>*@

@@ -1,0 +1,540 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{5BF876F0-EF0F-439B-B97F-72B4ADE888A6}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FBReports</RootNamespace>
+    <AssemblyName>FBReports</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EPPlus, Version=5.4.0.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>packages\EPPlus.5.4.0\lib\net45\EPPlus.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="log4net, Version=2.0.12.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>packages\log4net.2.0.12\lib\net45\log4net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Threading.Tasks" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AgentDispatchLog.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AllFBStatu.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AMPSList.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Application.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BrandName.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CallTypeSymptomSolutionMaster.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Category.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Contact.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Contact_PMUploadsALL.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Contingent.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ContingentDetail.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ElectricalPhaseList.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EquipType.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Erf.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ERFBranchDetail.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ERFOrderType.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ErfWorkorderLog.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ESMCCMRSMEscalation.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ESMDSMRSM.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EstimateEscalation.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FBActivityLog.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FBBillableFeed.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FbBillableSKU.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FBCallReason.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FBCBE.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FBClosurePart.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FBCustomerNote.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FBCustomerServiceDistribution.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FBEntity.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FBEntity.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FBEntity.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FBEntity.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FBEntity.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="FBEquipment.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FBERFEquipment.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FBERFExpendable.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FBERFTransactionType.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FBExpendable.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FBFunctionality.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FbPrimaryTechnician.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FbPrimaryTechnicians1.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FBReport.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FbRole.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FBRoleFunction.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FBSKU.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FbUserMaster.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FBUserReport.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FbWorkOrderSKU.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FeastMovement.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HolidayList.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IndexCounter.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Invoice.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NEMANumberList.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NoAutoEmailZipCode.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NoAutomaticEmailContract.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NonSerialized.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NonServiceworkorder.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NotesHistory.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OnCallGroup.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PhoneSolveLog.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Privilege.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RemovalSurvey.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Sku.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Solution.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="State.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Symptom.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SystemInfo.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TechOnCall.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TechSchedule.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TECH_HIERARCHY.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TECH_HIERARCHY_BACKUP.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ThirdpartyConMaintenanceZonerate.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ThirdPartyContractMaintenance.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TmpInvTransfer.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TmpinvTransferNonserialized.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TmpinvTransferSerialized.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TMP_SerialNOReport.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UnKnownCustomerLog.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserApplication.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserProfile.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserType.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="USP_GetTechDataByServiceCenterId_Result.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Vendor.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VoltageList.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VW_FBRoleFunction.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VW_tech_Hierarchy.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="v_AllPMandServiceEventsWithUniqueSerial.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="v_Contact.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="v_ContactServiceHistory.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="V_EquipmentCount.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="V_LastOneyearDispatches.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="V_LastOneyearInvoices.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="V_OpenCallTime.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="V_OriginalCallDetails.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="V_RepeatedPMandServiceEventDetails.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="V_RepeatedPMandServiceEvents.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="V_RepeatServiceRepair.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="V_RepeatServiceRepairDetails.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WaterLineList.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WorkOrder.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WorkOrderBrand.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WorkorderDetail.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WorkorderEquipment.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WorkorderEquipmentRequested.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WorkorderImage.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WorkorderInstallationSurvey.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WorkorderNonAudit.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WorkorderPart.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WorkorderReasonlog.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WorkorderSavedSearch.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WorkorderSchedule.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WorkorderServiceClaim.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WorkorderStatusLog.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WorkorderType.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="YHCompassSurvey.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="YHContact.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="YHContact_PMUploadsALL.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="YHERFEquipment.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="YHERFExpendable.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="YHEventBrand.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="YHEventNote.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="YHSMEvent.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="YHSMEventInvoice.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="YHSMEventSymcall.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="YHSMSchedule.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Zip.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ZonePriority.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ZoneZip.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EntityDeploy Include="FBEntity.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>FBEntity.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="FBEntity.edmx.diagram">
+      <DependentUpon>FBEntity.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="FBEntity.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>FBEntity.edmx</DependentUpon>
+      <LastGenOutput>FBEntity.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="FBEntity.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>FBEntity.edmx</DependentUpon>
+      <LastGenOutput>FBEntity.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

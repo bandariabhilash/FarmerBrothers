@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="FB_DevModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="FBCBE_Tmp">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ItemNumber" Type="nvarchar" MaxLength="25" />
+          <Property Name="ItemDescription" Type="nvarchar" MaxLength="30" />
+          <Property Name="SerialNumber" Type="nvarchar" MaxLength="30" />
+          <Property Name="AssetStatus" Type="nvarchar" MaxLength="1" />
+          <Property Name="CurrentLocation" Type="nvarchar" MaxLength="12" />
+          <Property Name="CurrentCustomerId" Type="int" />
+          <Property Name="CurrentCustomerName" Type="nvarchar" MaxLength="50" />
+          <Property Name="TransDate" Type="smalldatetime" />
+          <Property Name="InitialValue" Type="money" />
+          <Property Name="InitialDate" Type="smalldatetime" />
+          <Property Name="CurrentGLCode" Type="nvarchar" MaxLength="4" />
+          <Property Name="CurrentGLObject" Type="nvarchar" MaxLength="4" />
+          <Property Name="LastUpdatedDate" Type="datetime" />
+          <Property Name="EntryDate" Type="datetime" />
+        </EntityType>
+        <EntityContainer Name="FB_DevModelStoreContainer">
+          <EntitySet Name="FBCBE_Tmp" EntityType="Self.FBCBE_Tmp" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="FB_DevModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="FBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="FBCBE_Tmp" EntityType="FB_DevModel.FBCBE_Tmp" />
+        </EntityContainer>
+        <EntityType Name="FBCBE_Tmp">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ItemNumber" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="ItemDescription" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="SerialNumber" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="AssetStatus" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="CurrentLocation" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="CurrentCustomerId" Type="Int32" />
+          <Property Name="CurrentCustomerName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TransDate" Type="DateTime" Precision="0" />
+          <Property Name="InitialValue" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="InitialDate" Type="DateTime" Precision="0" />
+          <Property Name="CurrentGLCode" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="CurrentGLObject" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="LastUpdatedDate" Type="DateTime" Precision="3" />
+          <Property Name="EntryDate" Type="DateTime" Precision="3" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="FB_DevModelStoreContainer" CdmEntityContainer="FBEntities">
+          <EntitySetMapping Name="FBCBE_Tmp">
+            <EntityTypeMapping TypeName="FB_DevModel.FBCBE_Tmp">
+              <MappingFragment StoreEntitySet="FBCBE_Tmp">
+                <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
+                <ScalarProperty Name="LastUpdatedDate" ColumnName="LastUpdatedDate" />
+                <ScalarProperty Name="CurrentGLObject" ColumnName="CurrentGLObject" />
+                <ScalarProperty Name="CurrentGLCode" ColumnName="CurrentGLCode" />
+                <ScalarProperty Name="InitialDate" ColumnName="InitialDate" />
+                <ScalarProperty Name="InitialValue" ColumnName="InitialValue" />
+                <ScalarProperty Name="TransDate" ColumnName="TransDate" />
+                <ScalarProperty Name="CurrentCustomerName" ColumnName="CurrentCustomerName" />
+                <ScalarProperty Name="CurrentCustomerId" ColumnName="CurrentCustomerId" />
+                <ScalarProperty Name="CurrentLocation" ColumnName="CurrentLocation" />
+                <ScalarProperty Name="AssetStatus" ColumnName="AssetStatus" />
+                <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
+                <ScalarProperty Name="ItemDescription" ColumnName="ItemDescription" />
+                <ScalarProperty Name="ItemNumber" ColumnName="ItemNumber" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

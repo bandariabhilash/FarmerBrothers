@@ -1,0 +1,488 @@
+﻿@model FBCall.Models.AutoGenerateWorkorderModel
+@{
+    ViewBag.Title = "WorkOrder";
+}
+
+@using Syncfusion.MVC.EJ;
+@using Syncfusion.JavaScript;
+@using Syncfusion.EJ;
+
+<script type="text/javascript">
+    var erfOperation = false;
+    var saveWorkOrderOperation = false;
+    var controllerName = '@HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString()';
+    var updateUrl = null;
+    var newNotesArray = [];
+    var notesHistoryArray = [];
+    @foreach (var n in Model.Notes.NotesHistory.Select(n => n.Notes).ToArray())
+    {
+        string note = n.Replace("\n", "&#10;");
+        note = note.Replace("\r", "&#13;");
+        @:notesHistoryArray.push( "@note" );
+                                                                    }
+
+    var notes;
+
+
+    $( document ).ready( function ()
+    {
+
+         $('.PriorityDropDownList').ejDropDownList({
+                dataSource : @Html.Raw(Json.Encode(Model.PriorityList)),
+                fields: { value : "FBStatusID", text : "FBStatus" },
+                showRoundedCorner: true,
+                watermarkText: "Please Select"
+        }).data("ejDropDownList").selectItemByValue("@string.Join(",", Model.PriorityCode)");
+
+        @*$('.SpecificTechDropDownList').ejDropDownList({
+                dataSource : @Html.Raw(Json.Encode(Model.Notes.Technicianlist)),
+                fields: { value : "TechID", text : "PreferredProvider" },
+                showRoundedCorner: true,
+                watermarkText: "Please Select"
+        }).data("ejDropDownList").selectItemByValue("@string.Join(",", Model.Notes.TechID)");*@
+
+
+        notes = notesHistoryArray.join( "\r\n" );
+        notes = notes.split( "&amp;#13;" ).join( "\r" );
+        notes = notes.split( "&amp;#10;" ).join( "\n" );
+        //alert( "2" );
+        $( '#NotesHistory' ).text( notes );
+
+        //if ( $( "#SaveWorkOrderButton" ).length )
+        //{
+        //    $( "#SaveWorkOrderButton" ).click( function ()
+        //    {
+
+
+
+        //    event.preventDefault();
+        //    } );
+        //}
+
+
+        //alert( "3" );
+        $( "form" ).submit( function ( event )
+        {
+            var obj = $('.PriorityDropDownList').data("ejDropDownList");
+            $(".modal").show();
+
+            if ($("#myCaptcha_ValidText").hasClass("validTextBox error")) {
+                AlertPopup("|Invalid captcha code entered. Please try again.");
+                $(".spanText").css("display", "none");
+                $("#myCaptcha_ValidText").removeClass("validTextBox error").addClass("validTextBox");
+            }
+
+            if (erfOperation == true) {
+                //alert( "2" );
+                if ($.trim($('#NotesText').val()) == '') {
+                    AlertPopup("|Notes text can not be blank!");
+                }
+                else {
+
+                    $('[data-popup-close]').trigger("click");
+
+                    var fullDate = new Date();
+                    var twoDigitMonth = ((fullDate.getMonth().toString().length + 1) > 1) ? (fullDate.getMonth() + 1) : '0' + (fullDate.getMonth() + 1);
+                    var currentDate = twoDigitMonth + "/" + fullDate.getDate() + "/" + fullDate.getFullYear() + " " + fullDate.getHours() + ":" + fullDate.getMinutes() + ":" + fullDate.getSeconds();
+                    var newNotes = null;
+                    if (typeof (userName) == 'undefined') {
+                        newNotes = "[WEB] - " + currentDate + " - " + $('#NotesText').val();
+                    }
+                    else {
+                        newNotes = "[WEB - " + userName + "] - " + currentDate + " - " + $('#NotesText').val();
+                    }
+                    newNotesArray.push($('#NotesText').val());
+                    $('#NotesHistory').text(newNotes + '\n' + $('#NotesHistory').val());
+
+                }
+
+                $('#NotesText').val('');
+                erfOperation = false;
+                $(".modal").hide();
+            }
+
+
+            if ( saveWorkOrderOperation == true )
+            {
+                //alert( "3" );
+                saveWorkOrderOperation = false;
+                erfOperation = false;
+
+                if ($('#EquipmentLocation').val() == '' || $('#EquipmentLocation').val().length > 50) {
+
+                    $(".modal").hide();
+                    return false;
+
+                } else if ($('#CallerName').val() == '' || $('#CallerName').val().length > 60) {
+
+                    $(".modal").hide();
+                    return false;
+
+                }
+                else if (($('#WorkorderContactPhone').val() != '' && $('#WorkorderContactPhone').val().length > 30)) {
+                    $(".modal").hide();
+                    return false;
+
+                } else if (($('#WorkorderContactPhone').val() == '' || $('#WorkorderContactPhone').val().length > 30)) {
+
+                    $(".modal").hide();
+                    return false;
+
+                }
+                else if($("#PriorityCode").val()=="")
+                {
+                    AlertPopup("|Priority Code text can not be blank!");
+                    $(".modal").hide();
+                    return false;
+
+                }
+                else if ( newNotesArray.length == 0 )
+                {
+                    //alert( "4" );
+                    AlertPopup("|Notes text can not be blank!");
+                    $(".modal").hide();
+                    return false;
+                }
+                else if ($('#callReason').val() == -1) {
+                    AlertPopup("|Please Select Call Reason!");
+                    $(".modal").hide();
+                    return false;
+
+                }
+                else if (obj.option("value") == null) {
+                    AlertPopup("|Please Select Priority!");
+                    $(".modal").hide();
+                    return false;
+
+                }
+                else
+                {
+                    var notesItems = [];
+                    $.each( newNotesArray, function ( index, value )
+                    {
+                        var item = { Text: value, Value: -1 };
+                        notesItems.push( item );
+                    } );
+
+                    $( "#CustomerID" ).val( $( "#Customer_CustomerId" ).val() );
+
+                    if ( $( "#ActionWorkorderSave" ).length )
+                    {
+                        $( "#ActionWorkorderSave" ).val( "" );
+                    }
+                    else
+                    {
+                        var input1 = $( "<input id='ActionWorkorderSave'>" )
+                            .attr( "type", "hidden" )
+                            .attr( "name", "action:WorkorderSave" ).val( "" );
+                        $( this ).append( $( input1 ) );
+                    }
+
+                    if ( $( "#WorkOrderNotesHidden" ).length )
+                    {
+                        $( "#WorkOrderNotesHidden" ).val( JSON.stringify( notesItems ) );
+                    }
+                    else
+                    {
+                        //alert("4.1.2");
+                        var input5 = $( "<input id='WorkOrderNotesHidden'>" )
+                                .attr( "type", "hidden" )
+                                .attr( "name", "WorkOrderNotesHidden" ).val( JSON.stringify( notesItems ) );
+                        $( this ).append( $( input5 ) );
+                    }
+
+
+                    var input6 = $("<input id='WorkOrderPriorityHidden'>")
+                        .attr("type", "hidden")
+                        .attr("name", "WorkOrderPriorityHidden").val(JSON.stringify(obj.option("value")));
+                    $(this).append($(input6));
+
+                    var input7 = $("<input id='WorkOrderPriorityNameHidden'>")
+                        .attr("type", "hidden")
+                        .attr("name", "WorkOrderPriorityNameHidden").val(JSON.stringify(obj.option("text")));
+                    $(this).append($(input7));
+
+
+                    @*var input8 = $("<input id='WorkOrderSpecificTechHidden'>")
+                        .attr("type", "hidden")
+                        .attr("name", "WorkOrderSpecificTechHidden").val(JSON.stringify(obj.option("value")));
+                    $(this).append($(input8));
+
+                    var input9 = $("<input id='WorkOrderSpecificTechNameHidden'>")
+                        .attr("type", "hidden")
+                        .attr("name", "WorkOrderSpecificTechNameHidden").val(JSON.stringify(obj.option("text")));
+                    $(this).append($(input9));*@
+
+                    if ( $( "#UserNameHidden" ).length )
+                    {
+                        $( "#UserNameHidden" ).val( JSON.stringify( notesItems ) );
+                    }
+                    else
+                    {
+                        var input8 = $( "<input id='UserNameHidden'>" )
+                                .attr( "type", "hidden" )
+                                .attr( "name", "UserNameHidden" ).val( JSON.stringify( userName ) );
+                        $( this ).append( $( input8 ) );
+                    }
+
+                    var $this = $( this );
+                    var frmValues = $this.serialize();
+                    $.ajax( {
+                        type: $this.attr( 'method' ),
+                        url: "@Url.Action("SaveWorkOrder",HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString())",
+                        data: frmValues
+                    } ).done( function ( response )
+                    {
+                        if ( response != null && response.success == true )
+                        {
+                            AlertPopup( response.message );
+                            updateUrl = response.Url;
+                        }
+                        else
+                        {
+                            AlertPopup("|There is a problem in Work Order Creation! Please contact support.");
+                            $(".modal").hide();
+                        }
+                    } );
+                }
+                $( "#Operation" ).val( 0 );
+
+            }
+        } );
+
+
+        $( "[data-popup-close='popupalert']" ).click( function ()
+        {
+            if ( updateUrl != null )
+            {
+                window.location.href = updateUrl;
+            }
+        } );
+
+    } );
+
+
+
+    function SetNotesSaveOperation()
+    {
+        erfOperation = true;
+        saveWorkOrderOperation = false;
+    }
+
+    function SetWorkOrderSaveOperation( operation )
+    {
+        //alert("1")
+        erfOperation = false;
+        saveWorkOrderOperation = true;
+        $( "#Operation" ).val( operation );
+    }
+
+    function Validate()
+    {
+        //alert( "test" );
+        if ( $( "#myCaptcha_ValidText" ).hasClass( "validTextBox error" ) )
+        {
+            $( ".spanText" ).css( "display", "none" );
+            $( "#myCaptcha_ValidText" ).removeClass( "validTextBox error" ).addClass( "validTextBox" );
+        }
+    }
+
+
+
+
+</script>
+
+<style>
+    .col-md-6 {
+        width: 100%;
+    }
+</style>
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(m => m.Operation)
+    @Html.HiddenFor(m => m.CustomerID)
+    @Html.HiddenFor(m => m.UserName)
+
+    <section class="container-fluid white-bg pad fixedSecond header">
+        <div class="row vertical-align">
+            <div class="col-md-12" style="margin-top:  10px;">
+                <div class="col-md-9">
+                    <div class="row">
+                        <div class="col-md-3">
+                        </div>
+                        <div class="col-md-3">
+                        </div>
+                        <div class="col-md-3">
+                        </div>
+                        <div class="col-md-3">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="col-md-4" style="align-items:center">
+                                Created By: @Model.UserName
+                            </div>
+
+                            <div class="col-md-8">
+                                Created On: @Model.CreatedDate
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="col-md-3">
+                    </div>
+                    <div class="col-md-7">
+                        <div class="form-group" style="float:right ">
+                            @*<h4> @Html.CheckBoxFor(m => m.CrateWorkOrder)<b>Create Work Order</b> </h4>*@
+                        </div>
+                    </div>
+                    <div class="col-md-1">
+                        <button id="SaveWorkOrderButton" type="submit" @*style="display: inline-block;margin-right:5px;float:right;"*@ style="margin:2px;" class="btn btn-primary" onclick="SetWorkOrderSaveOperation(1);" name="action:WorkorderSave">Save</button>
+                    </div>
+                    <div class="col-md-1">
+                        @Html.ActionLink("Back", "Index", "Home", new { @IsBack = 1 }, new { @Class = "btn btn-primary btn-orange", @style = "margin:2px;" })
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="block margin-top" style="margin-bottom:0px;">
+        <div class="container-fluid">
+            <h2 class="customer-head arrow-down tabheader" style="margin-top:0px;">Customer</h2>
+        </div>
+        <div class="customer-content margin-top">
+            <div class="row clear-input">
+                <div class="col-md-12">
+                    <div class="col-md-3">
+                        <span class="col-md-8"><b>Account Number:</b></span>
+                        <div class="col-md-7">
+                            <div class="form-group">
+                                <div>@Html.ValueFor(c => c.Customer.CustomerId)</div>
+                                @Html.HiddenFor(c => c.Customer.CustomerId)
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-3">
+                        <span class="col-md-8"><b>Customer Name:</b></span>
+                        <div class="col-md-7">
+                            <div class="form-group">
+                                @Html.ValueFor(c => c.Customer.CustomerName)
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <span class="col-md-8"><b>Address:</b></span>
+                        <div class="col-md-7">
+                            <div class="form-group">
+                                @Html.ValueFor(c => c.Customer.Address)
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <span class="col-md-8"><b>City:</b></span>
+                        <div class="col-md-7">
+                            <div class="form-group">
+                                @Html.ValueFor(c => c.Customer.City)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+    </section>
+
+    <style>
+        /*.notes-details-content {
+            display: block !important;
+        }*/
+    </style>
+    <section class="block">
+        <div class="container-fluid">
+            <h2 class="notes-details-head arrow-down tabheader required1">Notes</h2>
+            <div class="notes-details-content col-md-12 customer-col2" style="display: block !important;">
+                <div class="col-md-3 customer-col1 sm-pad-reset">
+                    <div class="col-sm-6-o">
+                        <div class="form-group" style="margin-top:20px">
+                            <span class="col-md-6 required">Call Reason:</span><br />
+                            @Html.DropDownListFor(m => m.callReason, new SelectList(Model.WorkorderTypes, "CallTypeID", "Description"), new { @style = "max-width:270px", @class = "form-control WorkOrderFields" })
+                        </div>
+                    </div>
+                    <div class="col-sm-6-o">
+                        <div class="form-group">
+                            <span class="col-md-6 required">Equipment Location:</span><br />
+                            @Html.TextBoxFor(m => m.EquipmentLocation, "", new { Value = "", @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.EquipmentLocation, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 customer-col1 sm-pad-reset">
+                    <div class="col-sm-6-o">
+                        <div class="form-group" style="margin-top:20px">
+                            <span class="col-md-6 required">Caller Name:</span><br />
+                            @Html.TextBoxFor(w => w.CallerName, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.CallerName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-sm-6-o">
+                        <div class="form-group">
+                            <span class="col-md-8">Contact Phone Number:</span><br />
+                            @Html.TextBoxFor(w => w.WorkorderContactPhone, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.WorkorderContactPhone, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 customer-col1 sm-pad-reset">
+                    <div class="col-sm-6-o">
+                        <div class="form-group" style="margin-top:  20px;">
+                            <span class="col-md-6 required">Priority:</span><br />
+                            @Html.TextBoxFor(w => w.PriorityCode, new { @class = "form-control WorkOrderFields PriorityDropDownList" })
+                            @Html.ValidationMessageFor(m => m.PriorityCode, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-sm-6-o">
+                        <div class="form-group" style="margin-top:35px">
+                            @Html.EJ().Captcha("myCaptcha").EnableRefreshImage(true).EnableAudio(false).EnableAutoValidation(true).RequestMapper("Refresh").CustomErrorMessage("Invalid captcha code entered. Please try again.").TargetButton("SaveWorkOrderButton")
+                        </div>
+                        @*@Html.EJ().Captcha("SignUpCaptcha")*@
+                    </div>
+                </div>
+
+                @*<div class="col-md-3 customer-col1 sm-pad-reset">
+                    <div class="col-sm-6-o">
+                        <div class="form-group" style="margin-top:  20px;">
+                            @Html.CheckBoxFor(m => m.IsSpecificTechnician, new { @onchange = "onChangeIsSpecificTech()", @class = "IsSpecificTechnicianRaidoButton" }) FB Employee Requesting Specific Technician
+                        </div>
+                    </div>
+                </div>*@
+
+                @*<div class="col-md-3 customer-col1 sm-pad-reset">
+                    <div class="col-sm-6-o">
+                        <div class="form-group" style="margin-top:  20px;">
+                            <span class="col-md-6 required">Specific Technician:</span><br />
+                            @Html.TextBoxFor(w => w.Notes.TechID, new { @class = "form-control WorkOrderFields SpecificTechDropDownList" })
+                            @Html.ValidationMessageFor(m => m.Notes.Technicianlist, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>*@
+
+                <div style="clear:both;"></div>
+
+
+                @Html.Partial("_ErfNotes", Model.Notes)
+            </div>
+
+        </div>
+
+        <div class="clearAll"></div>
+
+    </section>
+
+}

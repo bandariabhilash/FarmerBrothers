@@ -1,0 +1,470 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2FDC8E2C-0CC2-4A87-895A-19A9E3FA2345}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FBPowerReport</RootNamespace>
+    <AssemblyName>FBPowerReport</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>D:\Websites\MAIAutoPrograms\FBPowerReportPublish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>8DF24EF44D68528A1F02A23EEAC3BA3FC708C147</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>FBPowerReport_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BouncyCastle.Cryptography, Version=2.0.0.0, Culture=neutral, PublicKeyToken=072edcf4a5328938, processorArchitecture=MSIL">
+      <HintPath>packages\BouncyCastle.Cryptography.2.6.2\lib\net461\BouncyCastle.Cryptography.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Bcl.AsyncInterfaces.8.0.0\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=8.0.0.2, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.DependencyInjection.Abstractions.8.0.2\lib\net462\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Logging.Abstractions, Version=8.0.0.3, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.Logging.Abstractions.8.0.3\lib\net462\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Renci.SshNet, Version=2025.1.0.1, Culture=neutral, PublicKeyToken=1cee9f8bde3db106, processorArchitecture=MSIL">
+      <HintPath>packages\SSH.NET.2025.1.0\lib\net462\Renci.SshNet.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Formats.Asn1, Version=8.0.0.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Formats.Asn1.8.0.2\lib\net462\System.Formats.Asn1.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Runtime.CompilerServices.Unsafe.4.5.3\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AllFBStatu.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BranchESM.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BrandName.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CallTypeSymptomSolutionMaster.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Category.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Contact.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Contingent.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ContingentDetail.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EquipType.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Erf.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ERFBranchDetail.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ERFOrderType.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ESMCCMRSMEscalation.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ESMDSMRSM.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EstimateEscalation.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FBActivityLog.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FBBillableFeed.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FbBillableSKU.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FBCallReason.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FBCBE.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FBClosurePart.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FBCustomerNote.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FBCustomerServiceDistribution.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FBEntity.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FBEntity.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FBEntity.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FBEntity.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FBEntity.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="FBEquipment.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FBERFEquipment.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FBERFExpendable.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FBERFTransactionType.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FBExpendable.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FBFunctionality.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FbPrimaryTechnician.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FBReport.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FBReport1.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FbRole.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FBRoleFunction.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FBSKU.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FbUserMaster.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FBUserReport.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FbWorkOrderSKU.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IndexCounter.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NonFBCustomer.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NonSerialized.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NonServiceworkorder.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NotesHistory.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OnCallGroup.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PhoneSolveLog.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PMUploads_All.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PowerReportDataModel.cs" />
+    <Compile Include="Privilege.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RemovalSurvey.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Sku.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Solution.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="State.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Symptom.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SystemInfo.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TechOnCall.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TechSchedule.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TECH_HIERARCHY.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ThirdpartyConMaintenanceZonerate.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ThirdPartyContractMaintenance.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TMP_BlackBerry_NSR.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TMP_BlackBerry_SCFAssetInfo.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TMP_BlackBerry_SCFInvoiceInfo.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TMP_BlackBerry_SCFPartsInfo.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tmp_PMUploads.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TMP_SerialNOReport.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserApplication.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserProfile.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserType.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Vendor.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WorkOrder.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WorkOrderBrand.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WorkorderDetail.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WorkorderEquipment.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WorkorderEquipmentRequested.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WorkorderImage.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WorkorderInstallationSurvey.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WorkorderNonAudit.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WorkorderPart.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WorkorderReasonlog.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WorkorderSavedSearch.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WorkorderSchedule.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WorkorderType.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Zip.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ZonePriority.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ZoneZip.cs">
+      <DependentUpon>FBEntity.tt</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EntityDeploy Include="FBEntity.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>FBEntity.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="FBEntity.edmx.diagram">
+      <DependentUpon>FBEntity.edmx</DependentUpon>
+    </None>
+    <None Include="FBPowerReport_TemporaryKey.pfx" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="FBEntity.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>FBEntity.Context.cs</LastGenOutput>
+      <DependentUpon>FBEntity.edmx</DependentUpon>
+    </Content>
+    <Content Include="FBEntity.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>FBEntity.edmx</DependentUpon>
+      <LastGenOutput>FBEntity.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

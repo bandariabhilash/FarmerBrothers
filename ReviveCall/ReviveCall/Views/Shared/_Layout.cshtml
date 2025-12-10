@@ -1,0 +1,116 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Marketing Alternatives Service Dispatch Application – MARS</title>
+   
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <link href="~/Content/Style.css" rel="stylesheet" />
+    
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/web/ej.web.all.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $('[data-popup-open]').on('click', function (e) {
+                var targeted_popup_class = jQuery(this).attr('data-popup-open');
+                $('[data-popup="' + targeted_popup_class + '"]').fadeIn(350);
+                $(".modal").hide();
+                e.preventDefault();
+            });
+
+            $('[data-popup-close]').on('click', function (e) {
+                var targeted_popup_class = jQuery(this).attr('data-popup-close');
+                $('[data-popup="' + targeted_popup_class + '"]').fadeOut(350);
+                if ($("#alertmessage").text().indexOf("Invoice Message: ") != -1) {
+                    location.reload(true);
+                }
+                $(".modal").hide();
+                e.preventDefault();
+
+            });
+        });
+
+        function AlertPopup( message )
+        {
+            var messages = message.split( "|" );
+
+            $( '#alertmessage' ).text( '' );
+            if ( messages.length > 1 )
+            {
+                $( '#alertmessage' ).append( 'Cannot Complete the Work Order!' );
+                $( '#alertmessage' ).append( '<ul>' );
+                for ( var i = 0; i < messages.length; i++ )
+                {
+                    if ( messages[i].length > 0 )
+                    {
+                        $( '#alertmessage' ).append( '<li>' + messages[i] + '</li>' );
+                    }
+                }
+                $( '#alertmessage' ).append( '</ul>' );
+            }
+            else
+            {
+                $( '#alertmessage' ).text( message );
+            }
+            $( "[data-popup='popupalert']" ).show();
+        }
+
+
+    </script>
+
+</head>
+<body>       
+    <section class="container-fluid dark-bg" style="padding-bottom: 9px;padding-top:6px;">
+        <a class="navbar-brand" href="#"><img src="~/images/FB0913_Logo_Revive_FINAL_White.png" alt="Logo" style="width:53px;"></a>
+        <a class="navbar-brand pull-right" href="" style="margin-left:16px">
+            <img src="~/images/mars-logo.png" class="mai-logo">
+        </a>
+        <div class="col-xs-12 col-sm-4 col-md-2 contactno" style="float: right;color: #ffffff;padding-top: 27px;text-align: right;">
+            <b>Contact: </b> 877-322-6885
+        </div>
+        <h2 class="h2style">REVIVE CUSTOMER SERVICE PORTAL</h2>
+        <div style="clear:both;"></div>
+    </section>
+
+    <div>
+        @RenderBody()
+        <hr />
+        <footer>
+            <div class="col-md-12" style="float:left;">
+                <p>Copyright © @DateTime.Now.Year Marketing Alternatives Inc. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+    <div class="popup" data-popup="popupalert">
+        <div class="popup-inner" style="min-width:300px;min-height:100px;">
+            <table>
+                <tr>
+                    <td>
+                        <span id="alertmessage"></span>
+                    </td>
+                </tr>
+            </table>
+            <a data-popup-close="popupalert" class="btn btn-orange enableonclose" style="margin-top:10px;">Close</a>
+            <a class="popup-close" data-popup-close="popupalert">x</a>
+        </div>
+    </div>
+
+
+
+    @*@Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @RenderSection("scripts", required: false)*@
+   
+</body>
+</html>
