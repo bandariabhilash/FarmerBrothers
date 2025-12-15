@@ -1,0 +1,1159 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" %>
+
+<%@ Register Assembly="Syncfusion.EJ.Web, Version=18.2460.0.44, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" Namespace="Syncfusion.JavaScript.Web" TagPrefix="ej" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+  <meta charset="utf-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    
+  <!--[if IE]>
+    <link rel="stylesheet" type="text/css" href="css/ie9.css">
+  <![endif]-->
+    <title>Farmer Brothers Call Closure Application</title>
+    <style type="text/css">
+        .required {
+            color:red;
+        }
+.select{
+    width:200px;
+    padding:2px 4px;
+}
+input[type=text]{
+    width:190px;
+    padding:2px 4px;
+}
+       .ui-autocomplete {
+            max-height: 200px;
+            overflow-y: auto;
+            /* prevent horizontal scrollbar */
+            overflow-x: hidden;
+            /* add padding to account for vertical scrollbar */
+            padding-right: 20px;
+        }
+       table {font-family: Arial, Helvetica, sans-serif; font-size: 15px; }
+.style11 {font-family: Arial, Helvetica, sans-serif; font-size: 15px; }
+.style12 {font-size: 12px}
+.txtglow {font-family: Arial, Helvetica, sans-serif; font-size: 25px;font-weight: bold; color:#FFFF00 }
+.labelTxt {font-family: Arial, Helvetica, sans-serif; font-size: 14px;font-weight: bold; }
+.ErrTxt {font-family: Arial, Helvetica, sans-serif; font-size: 10;font-weight: bold; color:#FF0000 }
+.style15 {font-family: Arial, Helvetica, sans-serif; font-weight: bold; font-size:35px }
+.top-bar1 a.button {
+	float:left;
+	display:block;
+	height:15px;
+	text-align:center;
+	color:#fff;
+	text-transform:uppercase;
+	font-weight:bold;
+	padding:10px;
+	background: #400000;
+	background: -webkit-gradient(
+			linear,
+			left top,
+			left bottom,
+			color-stop(0.2, rgb(255,154,76)),
+			color-stop(0.8, rgb(240,96,0))
+		);
+	background:	-moz-linear-gradient(
+			center top,
+			rgb(255,154,76) 20%,
+			rgb(240,96,0) 80%
+		);
+	border-radius: 7px;
+	-moz-border-radius: 7px;
+	-webkit-border-radius: 7px;
+	}
+    #OParts {
+    width: 426px;
+    }
+    #OParts thead {
+        background-color:#000000;
+        color:#fff;
+        font-weight:bold;  
+    }
+    .btn{
+        padding: 5px;
+    background-color: #071b63;
+    color: #fff;
+    border: 0px;
+    margin-top: 10px;
+    cursor:pointer;
+}
+    .clear{
+        background-color: #c70a0a;
+    border: 0;
+    padding: 3px 10px;
+    color: #fff;
+    cursor: pointer;
+        }
+</style>
+<script language="javascript">
+
+function CheckForm(frmship)
+{
+		//updated on Mar 10th by hareesh
+		if (frmship.CallType.value==""){
+		alert("Please Select Service Code");
+		frmship.CallType.focus();
+		return false;
+		}
+		
+		if (frmship.model.value==""){
+		alert("Please enter Model Number");
+		frmship.model.select;
+		frmship.model.focus();
+		return false;
+		}
+				return true;
+}
+</script>
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/flick/jquery-ui.css">
+    <link rel="stylesheet" href="css/jquery.datetimepicker.css" />
+    <script src="js/jquery-1.10.0.min.js" type="text/javascript"></script>
+    
+        <link href="//cdn.syncfusion.com/18.4.0.39/js/web/flat-azure/ej.web.all.min.css" rel="stylesheet" />
+        <%--<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>--%>
+
+        <script src="http://cdn.syncfusion.com/18.4.0.39/js/web/ej.web.all.min.js" type="text/javascript"></script>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<script src="js/jquery-ui.min.js" type="text/javascript"></script>
+    <style>
+        .ui-datepicker-current {
+display: none !important;
+}
+    </style>
+    <script type="text/javascript" src="js/jquery-ui-timepicker-addon.js"></script>
+    <script type="text/javascript" src="js/jquery-ui-sliderAccess.js"></script>
+    <link rel="stylesheet" href="css/jquery-ui-timepicker-addon.css" />
+        <script>
+            $(document).ready(function () {
+                'use strict';               
+                Date.prototype.addHours = function (h) {
+                    this.setHours(this.getHours() + h);
+                    return this;
+                }
+                //$('#ADate,#CDate').datetimepicker();
+                var today = new Date();
+                var WOEntryDat = new Date($('#WOrdEntryDate').val());
+                var today = new Date();
+
+                var StartDateTextBox = $('#SDate');
+                var ArrivalDateTextBox = $('#ADate');
+                var CloseDateTextBox = $('#CDate');
+
+                StartDateTextBox.datetimepicker({
+                    minDateTime: WOEntryDat,
+                    maxDateTime: null,
+                    controlType: 'select',
+                    oneLine: true,
+                    timeFormat: "hh:mm TT",
+                    onSelect: function (selectedDateTime) {
+                        $("#ADate,#CDate").val("").removeClass("hasDatepicker");
+                    },
+                    onClose: function (selectedDateTime) {
+                        arrivalFunction();
+                    }
+                }).attr('readonly', 'readonly');
+
+
+                function arrivalFunction() {
+                    if ($('#SDate').val() == "") {
+                        alert("Please Select Start Date/Time");
+                        return false;
+                    }
+                    var SDat = new Date($('#SDate').val());
+                    var Addhr = new Date($('#SDate').val());
+                    Addhr = Addhr.addHours(4);
+                    Addhr = new Date(Addhr);
+                    ArrivalDateTextBox.datetimepicker({
+                        minDateTime: SDat,
+                        maxDateTime: Addhr,
+                        controlType: 'select',
+                        oneLine: true,
+                        timeFormat: "hh:mm TT",
+                        onSelect: function (selectedDateTime1) {
+                            $("#CDate").val("").removeClass("hasDatepicker");
+                        },
+                        onClose: function (selectedDateTime1) {
+                            closeFunction();
+                        }
+                    }).attr('readonly', 'readonly');
+                }
+
+                function closeFunction() {
+                    if ($('#ADate').val() == "") {
+                        alert("Please Select Arrival Date/Time");
+                        return false;
+                    }
+                    var ADat = new Date($('#ADate').val());
+                    var AddChr = new Date($('#ADate').val());
+                    AddChr = AddChr.addHours(12);
+                    AddChr = new Date(AddChr);
+                    CloseDateTextBox.datetimepicker({
+                        minDateTime: ADat,
+                        maxDateTime: AddChr,
+                        controlType: 'select',
+                        oneLine: true,
+                        timeFormat: "hh:mm TT"
+                    }).attr('readonly', 'readonly');
+                }
+
+
+                $('body').on('focus', "#ADate", function () {
+                    if ($('#SDate').val() == "") {
+                        $('input:focus').blur();
+                        alert("Please Select Start Date/Time");
+                        return false;
+                    } else {
+                        arrivalFunction();
+                    }
+                });
+                $('body').on('focus',"#CDate", function(){ 
+                    if ($('#ADate').val() == "") {
+                        $('input:focus').blur();
+                        alert("Please Select Arrival Date/Time");
+                        return false;
+                    } else {
+                        closeFunction();
+                    }
+                });
+
+
+                $('#wrntyDD').on('change', onWarrentyChange);
+                $('#followupDD').on('change', onFollowupChange);
+                onWarrentyChange();
+                onFollowupChange();
+
+                //endDateTextBox.datetimepicker({
+                //    controlType: 'select',
+                //    oneLine: true,
+                //    timeFormat: "hh:mm TT"
+                //}).attr('readonly', 'readonly');
+
+
+                //$('#SDate').datetimepicker({
+                //    minDateTime: WOEntryDat,
+                //    maxDateTime: null,
+                //    controlType: 'select',
+                //    oneLine: true,
+                //    timeFormat: "hh:mm TT"
+                //}).attr('readonly', 'readonly');
+                
+                //$('body').on('focus',"#ADate", function(){ 
+                //    if ($('#SDate').val() == "") {
+                //        alert("Please Select Start Date/Time");
+                //        $("#SDate").focus();
+                //        return false;
+                //    } else {
+                //        if (false == $(this).hasClass('hasDatepicker')) {
+                //            var SDat = new Date($('#SDate').val());
+                //            var Addhr = new Date($('#SDate').val());
+                //            Addhr = Addhr.addHours(4);
+                //            Addhr = new Date(Addhr);
+                //            $(this).datetimepicker({
+                //                minDateTime: SDat,
+                //                maxDateTime: Addhr,
+                //                //addSliderAccess: true,
+                //                //sliderAccessArgs: { touchonly: false },
+                //                controlType: 'select',
+                //                oneLine: true,
+                //                timeFormat: "hh:mm TT"
+                //            }).attr('readonly', 'readonly');
+                //        }
+                //    }
+                //});
+
+                //$('body').on('focus', "#CDate", function () {
+                //    if ($('#ADate').val() == "") {
+                //        alert("Please Select Arrival Date/Time");
+                //        $("#ADate").focus();
+                //        //$("#CDate").datetimepicker('Hide');
+                //        return false;
+                //    }
+                //    if (false == $(this).hasClass('hasDatepicker')) {
+                //        var ADat = new Date($('#ADate').val());
+                //        var AddChr = new Date($('#ADate').val());
+                //        AddChr = AddChr.addHours(12);
+                //        AddChr = new Date(AddChr);
+                //        $(this).datetimepicker({
+                //            minDateTime: ADat,
+                //            maxDateTime: AddChr,
+                //            controlType: 'select',
+                //            oneLine: true,
+                //            timeFormat: "hh:mm TT"
+                //        }).attr('readonly', 'readonly');
+                //    }
+                //});
+            });
+
+            function onWarrentyChange() {
+                var warrentyValue = $("#wrntyDD").val();
+                if (warrentyValue && warrentyValue.toUpperCase() == 'YES') {
+                    $('#warrentyForSection').show();
+                }
+                else {
+                    $('#warrentyForSection').hide();
+                }
+            }
+            function onFollowupChange() {
+                var followupValue = $("#followupDD").val();
+                if (followupValue && followupValue.toUpperCase() == 'YES') {
+                    $('#folloupTxtSection').show();
+                }
+                else {
+                    $('#folloupTxtSection').hide();
+                }
+            }
+        </script>
+
+    <script type="text/javascript">
+    $(function () {
+        $("[id$=txtSearch]").autocomplete({
+            source: function (request, response) {
+                $.ajax({
+                    url: '<%=ResolveUrl("~/Default.aspx/GetParts") %>',
+                    data: "{ 'prefix': '" + request.term + "'}",
+                    dataType: "json",
+                    type: "POST",
+                    contentType: "application/json; charset=utf-8",
+                    success: function (data) {
+                        response($.map(data.d, function (item) {
+                            return {
+                                label: item.split('~')[0],
+                                val: item.split('~')[1]
+                            }
+                        }))
+                    },
+                    error: function (response) {
+                        alert(response.responseText);
+                    },
+                    failure: function (response) {
+                        alert(response.responseText);
+                    }
+                });
+            },
+            select: function (e, i) {
+                //alert(i.item.val);
+                //$("[id$=hfPartsId]").val(i.item.val);
+            },
+            minLength: 1
+        });
+        var c =1;
+        $('#search').click(function () {
+            var sid = $("#txtSearch").val();
+            //alert(sid);
+            $.ajax({
+                url: '<%=ResolveUrl("~/Default.aspx/GetItems") %>',
+                data: "{ 'SID': '" + sid + "'}",
+                dataType: "json",
+                type: "POST",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    var str1 = data.d;
+                    var res = str1.split("^");
+                    // alert(res[1]);
+                    if (str1 != "") {
+                        $("#OParts tbody").append('<tr><td><a href="javascript:void(0);" class="remCF">Del</a></td><td><input type="hidden" name="Sku' + c + '" value="' + res[4] + '" readonly/><input type="text" name="Qty' + c + '" value="1" style="width: 30px;"/></td><td><input type="text" name="EN' + c + '" value="' + res[0] + '" style="width: 75px;" readonly/></td><td><input type="text" name="IN' + c + '" value="' + res[1] + '" style="width: 75px;" readonly/></td><td><input type="text" name="VN' + c + '" value="' + res[2] + '" style="width: 75px;" readonly/></td><td><input type="text" name="Des' + c + '" value="' + res[3] + '" style="width: 175px;" readonly/></td></tr>');
+                        c++;
+                        //var rowCount = $('#OParts tbody tr').length;
+                        $("#trcount").val(c);
+                        $("#txtSearch").val("");
+                    } else {
+                        alert("No Record Found.");
+                        $("#txtSearch").val("");
+                    }
+                }
+            });
+        });
+        $("#OParts tbody").on('click', '.remCF', function () {
+            $(this).parent().parent().remove();
+            //var rowCount = $('#OParts tbody tr').length;
+            //$("#trcount").val(rowCount);
+        });
+        $('#Button1').click(function () {
+            if ($('#CallType').val() == '0') {
+                alert('Please Select Service Code');
+                return false;
+            }
+            if ($('#SymptomCode').val() == '0') {
+                alert('Please Select Symptom Code');
+                return false;
+            }
+            if ($('#SystemCode').val() == '0') {
+                alert('Please Select System Code');
+                return false;
+            }
+            if ($('#CompletionCode').val() == '0') {
+                alert('Please Select Completion Code');
+                return false;
+            }
+            if ($('#EquipType').val() == '0') {
+                alert('Please Select Equip Type');
+                return false;
+            }
+            if ($('#Vendor').val() == '0') {
+                alert('Please Select Manufacturer');
+                return false;
+            }
+            if ($('#model').val() == '') {
+                alert('Please Enter Model');
+                return false;
+            }
+            if ($('#serial').val() == '') {
+                alert('Please Enter Serial');
+                return false;
+            }
+
+            if ($('#calltypeID').val() == '1300') {
+                if ($('#RCode').val() == '0') {
+                    alert('Please Select Reason Code');
+                    return false;
+                }
+            }
+
+            if ($('#EventNotes').val() == '') {
+                alert('Please Enter Comments/Work Performed');
+                return false;
+            }
+            //var signaturePad = new SignaturePad(canvas);
+
+            //var dataURL = signaturePad.toDataURL();
+           // alert(dataURL);
+            //if (signaturePad.isEmpty()) {
+            //    alert("Please provide a signature first.");
+            //    return false;
+            //} else {
+            //    var dataURL = signaturePad.toDataURL();
+            //    alert(dataURL);
+            //    $("#ImgInformation").val(signaturePad.toDataURL());
+            //}
+        });
+
+        //$('#test').click(function () {
+        //    alert("hi");
+        //    var canvas1 = document.getElementById("CusSignCanv");
+        //    var canvas2 = document.getElementById("TechSignCanv");
+        //    var Cusimgsrc = canvas1.toDataURL("image/png");
+        //    var Techimgsrc = canvas2.toDataURL("image/png");
+        //    alert("C1 " + Cusimgsrc);
+        //    alert("T1 " + Techimgsrc);
+        //    return false;
+        //});
+
+        $('#Button2').click(function () {
+
+            var Cusimgsrc = document.getElementById("CusSignCanv");
+            var Techimgsrc = document.getElementById("TechSignCanv");
+            //var Cusimgsrc = canvas1.toDataURL("image/png");
+            //var Techimgsrc = canvas2.toDataURL("image/png");
+            document.getElementById("hfSign1").value = Cusimgsrc.toDataURL();
+            document.getElementById("hfSign2").value = Techimgsrc.toDataURL();
+
+                if ($('#BillableCheckBox').is(":checked")) {
+                    var trow = $("#SKURows > tbody > tr").length;
+                    if (trow <= '0') {
+                        alert("Please Add Minimum one SKU");
+                        return false;
+                    }
+                }
+
+                if ($('#CallType').val() != '0' || $('#SymptomCode').val() != '0' || $('#SystemCode').val() != '0' || $('#CompletionCode').val() != '0' || $('#EquipType').val() != '0' || $('#Vendor').val() != '0' || $('#model').val() != '' || $('#EventNotes').val() != '') {
+                    alert('Please Submit Machine Details First.');
+                    return false;
+                }
+            if ($('#InvNo').val() == '') {
+                alert('Please Enter Invoice Number');
+                return false;
+            }
+            var sign = $('#CusSignature').ejSignature("instance");
+            if (sign.points === undefined || (sign.points && sign.points.length == 0)) {
+                alert('Customer Signature required');
+                return false;
+            }
+            if ($('#SignedBy').val() == '') {
+                alert('Please Enter Signed By');
+                return false;
+            }
+            if ($('#SDate').val() == '') {
+                alert('Please Enter Start Date/Time');
+                return false;
+            }
+
+            if ($('#ADate').val() == '') {
+                alert('Please Enter Arrival Date/Time');
+                return false;
+            }
+            if ($('#CDate').val() == '') {
+                alert('Please Enter Completion Date/Time');
+                return false;
+            }
+            if ($('#statEqpTxt').val() == '') {
+                alert('Please Enter State of Equipment');
+                return false;
+            }
+            if ($('#srvcDlyTxt').val() == '') {
+                alert('Please Enter Serivce Delayed');
+                return false;
+            }
+            if ($('#trblShtStpsTxt').val() == '') {
+                alert('Please Enter Troubleshoot steps');
+                return false;
+            }
+            if ($('#wrntyDD').val() == '') {
+                alert('Please select If under Warranty');
+                return false;
+            } 
+            if ($('#wrntyDD').val() === 'YES' && $('#wrntyForDD').val() == '') {
+                alert('Please select Warranty For');
+                return false;
+            }
+            if ($('#followupDD').val() == '') {
+                alert('Please select If Followup Needed');
+                return false;
+            }
+            if ($('#followupDD').val() === 'YES' && $('#followupTxt').val() == '') {
+                alert('Please Enter Followup details');
+                return false;
+            }
+            if ($('#operationalDD').val() == '') {
+                alert('Please select If Operational');
+                return false;
+            } ReviewedByTxt
+            if ($('#ReviewedByTxt').val() == '') {
+                alert('Please Enter Reviewed By Name');
+                return false;
+            }
+
+            ////            Added By hareesh on 2 Mar 2018  //
+            //var SDate = new Date($('#SDate').val().replace("AM", " AM").replace("PM", " PM"));
+            //var ADate = new Date($('#ADate').val().replace("AM", " AM").replace("PM", " PM"));
+            //var CDate = new Date($('#CDate').val().replace("AM", " AM").replace("PM", " PM"));
+
+            //var todayDate = new Date();
+            //if (SDate > todayDate) {
+            //    alert('Please Enter Start Date/Time less than today');
+            //    return false;
+            //}
+
+            //if (ADate > todayDate) {
+            //    alert('Please Enter Arrival Date/Time less than today');
+            //    return false;
+            //}
+
+            //if (CDate > todayDate) {
+            //    alert('Please Enter Completion Date/Time less than today');
+            //    return false;
+            //}
+            ////            Added By hareesh on 2 Mar 2018  //
+        });
+        //$("#SDate,#ADate,#CDate").calendar().attr('readonly', 'readonly');
+
+        
+        
+        $('#Button3').click(function () {
+            if ($('#Reasions').val() == '0') {
+                alert('Please Select Reasion');
+                return false;
+            }
+        });
+    });  
+    </script>
+<script type="text/javascript">
+    $(function () {
+        //$(".billablechk").hide();
+        if ($('#BillableCheckBox').is(":checked")) {
+            $(".billablechk").show();
+        } else {
+            $(".billablechk").hide();
+        }
+            $("[id$=SkuSearch]").autocomplete({
+                source: function (request, response) {
+                    $.ajax({
+                        url: '<%=ResolveUrl("~/Default.aspx/GetSKUs") %>',
+                        data: "{ 'prefix': '" + request.term + "'}",
+                        dataType: "json",
+                        type: "POST",
+                        contentType: "application/json; charset=utf-8",
+                        success: function (data) {
+                            response($.map(data.d, function (item) {
+                                return {
+                                    label: item.split('~')[0],
+                                    val: item.split('~')[1]
+                                }
+                            }))
+                        },
+                        error: function (response) {
+                            alert(response.responseText);
+                        },
+                        failure: function (response) {
+                            alert(response.responseText);
+                        }
+                    });
+                },
+                select: function (e, i) {
+                    //alert(i.item.val);
+                    //$("[id$=hfPartsId]").val(i.item.val);
+                },
+                minLength: 1
+            });
+            var j = 1;
+            $('#skusearchbtn').click(function () {
+                var sid = $("#SkuSearch").val();
+            //alert(sid);
+            $.ajax({
+                url: '<%=ResolveUrl("~/Default.aspx/GetItemsList") %>',
+                data: "{ 'SID': '" + sid + "'}",
+                dataType: "json",
+                type: "POST",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    var str2 = data.d;
+                    var res = str2.split("^");
+                    //alert(res[1]);
+                    if (str2 != "") {
+                        var pri = res[2]*1;
+                        //alert(pri.toFixed(2));
+                        $("#SKURows tbody").append('<tr><td><a href="javascript:void(0);" class="remCF">Del</a></td><td><input type="text" class="qty" id="Qty' + j + '" name="Qty' + j + '" value="1" style="width: 45px;text-align: center;"/></td><td><input type="text" name="Sku' + j + '" value="' + res[0] + '" style="width: 75px;border: 0;    background-color: inherit;" readonly/></td><td><input type="text" name="SKUDes' + j + '" value="' + res[1] + '" style="width: 175px;border: 0; background-color: inherit;" readonly/></td><td><input type="text" id="UnitPrice' + j + '" name="UnitPrice' + j + '" value="$' + pri + '" style="width:76px;border: 0;background-color: inherit;text-align:right;" readonly/></td><td><input type="text" id="Price' + j + '" name="Price' + j + '" value="$' + pri + '" style="width: 75px;border: 0;background-color: inherit;text-align:right;" readonly/></td></tr>');
+                        j++;
+                        //var rowCount = $('#OParts tbody tr').length;
+                        $("#SKUtrcount").val(j);
+                        $("#SkuSearch").val("");
+                    } else {
+                        alert("No Record Found.");
+                        $("#SkuSearch").val("");
+                    }
+                }
+            });
+        });
+            $("#SKURows tbody").on('click', '.remCF', function () {
+                $(this).parent().parent().remove();
+                //var rowCount = $('#OParts tbody tr').length;
+                //$("#trcount").val(rowCount);
+            });
+
+
+            $("#SKURows tbody").on('keypress keyup blur', '.qty', function (e) {
+            //alert("hi");
+            $(this).val($(this).val().replace(/[^\d].+/, ""));
+            var val = $(this).val();
+            //alert(val);
+            if ((e.which < 48 || e.which > 57)) {
+                e.preventDefault();
+            } else {
+                var tid = $(this).attr("id");
+                //alert(tid);
+                tid = tid.replace("Qty", "");
+                var UPrice = $("#UnitPrice" + tid).val().replace("$", "");
+                var total = UPrice * val
+                //alert(total);
+                $("#Price" + tid).val("$"+total.toFixed(2));
+            }
+        });
+            
+
+        //    $('#Button4').click(function () {
+        //    var trow = $("#SKURows > tbody > tr").length;
+        //    if (trow <= '0') {
+        //        alert("Please Add Minimum one SKU");
+        //        return false;
+        //    }
+        //});
+            $('#BillableCheckBox').change(function () {
+                if ($(this).is(":checked")) {
+                    //alert("hi");
+                    $(".billablechk").show();
+                } else {
+                    $(".billablechk").hide();
+                }
+            });
+        });
+
+        </script>
+     <style>
+                #Button1 {
+            margin-top: 11px;
+            background-color: #0008f7cc;
+            color: #ffffff;
+            border: 0px;
+            padding: 5px 8px;
+        }
+        #search {
+                margin-top: 17px;
+    cursor: pointer;
+    background-color: #001823;
+    color: #fff;
+    border: 1px solid #3533ad;
+    padding: 3px 5px;
+        }
+ #SKURows {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+}
+ #SKURows thead tr {
+ background-color: #0ba8cc;
+    color: #fff;
+}
+ #SKURows td {
+    border: 1px solid #ddd;
+}
+#customers thead tr td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#SKURows tr:nth-child(even){background-color: #f2f2f2;}
+
+#SKURows  thead tr td {
+        padding: 8px 8px;
+    text-align: left;
+    background-color: #0ba8cc;
+    color: white;
+}
+/*.txtglow {
+    color: #f7f7f7 !important;
+    font-size: 16px !important;
+    background-color: #000;
+    padding: 2px 4px;
+    }*/
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">    
+        <%--<ej:Signature ID="Signature1" Height="400px" StrokeWidth="3" IsResponsive="true" runat="server"></ej:Signature>--%>
+        <div  runat="server" id="maintbl">    
+        <table border="0">
+<tr>
+    <td colspan="2"><span class="style15">FB# <asp:Label runat="server" ID="fb" /></span></td>
+  </tr>
+  <div runat="server" id="Ttype">
+  <tr>
+  	<td colspan="2">
+	<table width="100%">
+		<tr>
+			<td width="100%" bgcolor="#400000" align="center" height="30">
+                <asp:LinkButton ID="linkGoSomewhere" runat="server" Class="txtglow" onClick="linkGoSomewhere_Click" Text="No Service Required" />
+			</td>
+		</tr>
+	</table>
+	</td>
+  </tr>
+  <tr>
+  	<td colspan="2" class="labelTxt">No Service Required means customer site was not visited.  <br>If anyone has visited the 
+	customer site to attempt service, this tab is not to be used. <BR>Events closed NSR do not count toward the Technician’s Productivity.</td>
+  </tr>
+  </div>
+  <tr>
+  	<td colspan="2"><font color="#FF0000"><b><asp:Label runat="server" ID="errmsg" ></asp:Label></b></font></td>
+  </tr>
+  <tr>
+    <td colspan="2">
+        <span class="style11">Service Code<span class="required">*</span></span><br />
+        <asp:DropDownList ID="CallType" runat="server" Class="select" style="font-size:14px;" >
+      </asp:DropDownList>
+       </td>
+      </tr>
+  <tr>
+    <td colspan="2">
+        <span class="style11">Symptom Code<span class="required">*</span></span><br />
+        <asp:DropDownList ID="SymptomCode" runat="server" Class="select" style="font-size:14px;" >
+      </asp:DropDownList>
+       </td>
+      </tr>
+  <tr>
+    <td colspan="2">
+        <span class="style11">System Code<span class="required">*</span></span><br />
+        <asp:DropDownList ID="SystemCode" runat="server" Class="select" style="font-size:14px;" >
+      </asp:DropDownList>
+       </td>
+      </tr>
+      <tr>
+    <td colspan="2">
+        <span class="style11"> Completion Code<span class="required">*</span> </span><br />
+              <asp:DropDownList ID="CompletionCode" runat="server" Class="select" style="font-size:14px;" >
+      </asp:DropDownList>
+       </td>
+      </tr>
+      <tr>
+    <td colspan="2">
+        <span class="style11">Equipment Type<span class="required">*</span>  </span><br />        
+      <asp:DropDownList ID="EquipType" runat="server" Class="select" style="font-size:14px;" >
+      </asp:DropDownList>
+       </td>
+      </tr>
+      <tr>
+    <td colspan="2">
+        <span class="style11">Manufacturer<span class="required">*</span> </span><br />
+      <asp:DropDownList ID="Vendor" runat="server" Class="select" style="font-size:14px;" >
+      </asp:DropDownList>
+       </td>
+      </tr>
+      
+      <tr>
+    <td colspan="2">
+        <span class="style11">Serial # <span class="required">*</span></span><br />
+        <asp:DropDownList ID="serialNumDD" runat="server" Class="select" style="font-size:14px;" AutoPostBack="True"  OnSelectedIndexChanged="serialNumDD_SelectedIndexChanged" >
+	    </asp:DropDownList><br />
+        <asp:TextBox ID="serial" runat="server" style=" font-size:14px"></asp:TextBox> <a href="https://docs.google.com/forms/d/1bCqtRKbBxXoP7xVQBMS6gT2Q3YiDs-zave9bUliFesk/viewform?chromeless=1&edit_requested=true" target="_blank">E-EML Form</a>
+    </td>
+  </tr>
+      <tr>
+    <td colspan="2" id="ReasonCode" runat="server">
+        <span class="style11">Reason Code<span class="required">*</span> </span><br />
+      <asp:DropDownList ID="RCode" runat="server" Class="select" style="font-size:14px;" >
+      </asp:DropDownList>
+       </td>
+      </tr>
+  <tr>
+    <td colspan="2">
+        <span class="style11">Model<span class="required">*</span> </span><br />        
+        <asp:TextBox ID="model" runat="server" style=" font-size:14px"></asp:TextBox>    
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2">
+        <span class="style11">Temperature </span><br />        
+        <asp:TextBox ID="Temperature" runat="server" style=" font-size:14px"></asp:TextBox>    
+    </td>
+  </tr>
+   <tr>
+        <td colspan="2">
+            <span class="style11">Weight </span><br />  
+            <asp:TextBox ID="WeightTxt" runat="server" style=" font-size:14px" ></asp:TextBox>
+        </td>
+   </tr>
+   <tr>
+        <td colspan="2">
+            <span class="style11">Ratio </span><br />  
+            <asp:TextBox ID="RatioTxt" runat="server" style=" font-size:14px" ></asp:TextBox>
+        </td>
+    </tr>
+
+  <tr>
+    <td colspan="2"><span class="style11">Comments/Work Performed:<span class="required">*</span> </span><br />        
+        <asp:TextBox ID="EventNotes" runat="server" TextMode="MultiLine" style="font-size:14px; width:200px;"></asp:TextBox>
+    </td>
+  </tr>
+  
+   <tr>
+     <td colspan="2"><hr /></td></tr>
+   <tr>
+       <td colspan="2">
+           <table>
+               <tr><td>Part/Entry/Vendor:<br /><asp:TextBox ID="txtSearch" runat="server" /></td><td></td>
+                   <td>                       
+                    <%--<asp:HiddenField ID="hfPartsId" runat="server" />
+                    <asp:Button ID="Button1" Text="Search/Add" runat="server" OnClick="Submit" />--%>
+                       <asp:HiddenField ID="trcount" runat="server" Value="0" />
+                       <asp:HiddenField ID="calltypeID" runat="server" />
+                       <input type="button" value="Search/Add" id="search" style="margin-top: 17px; cursor:pointer;" />
+                   </td>
+               </tr>
+           </table>
+
+       </td>
+   </tr>
+            <tr>
+                <td>
+                    <table id="OParts" border="1">
+                        <thead>
+                        <tr><td>Remove</td><td>Qty</td><td>Entry No</td><td>Item No</td><td>Vendor No</td><td>Description</td></tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                   <%-- <button class="button clear">Clear</button>--%>
+               <asp:Button ID="Button1" Text="Add Machine & Parts" runat="server" Class="btn" OnClick="Button1_Click"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div id="Div1" runat="server"></div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div id="callclo" runat="server">
+                        <div id="signature-pad" class="m-signature-pad">
+                    <table>
+                        <tr>
+                            <td>Invoice Number:<span class="required">*</span><br />
+                                <asp:TextBox ID="InvNo" runat="server" style=" font-size:14px"></asp:TextBox>
+                                <asp:Button ID="InvoiceGenerateBtn" Text="AutoGen Invoice" OnClick="InvoiceGenerateBtn_Click" runat="server"></asp:Button>
+
+                                <asp:HiddenField ID="WOrdEntryDate" runat="server" />
+                            </td>
+                        </tr>   
+                        </table>
+                            <table>
+                        <tr>
+                            <td>        
+                                <table style="margin-top: 15px;">
+                                    <tr>
+                                        <td>
+                                            <asp:CheckBox ID="BillableCheckBox" runat="server" Text="Is Billable" style="font-weight:bold;"/></td>
+                                    </tr>
+                                </table>                        
+                                <div class="billablechk">
+                                <table style="margin-top: 7px;">
+                                       <tr>
+                                           <td>Sku Search:<br /><asp:TextBox ID="SkuSearch" runat="server" /></td>
+                                          <td><input type="button" value="Search/Add" id="skusearchbtn" style="margin-top: 17px; cursor:pointer;" />
+                                               <asp:HiddenField ID="SKUtrcount" runat="server" Value="0" /></td>
+                                       </tr>
+                                </table>
+                    
+                                <table id="SKURows" border="1">
+                                    <thead>
+                                        <tr><td>Remove</td><td>Qty</td><td>SKU</td><td>Description</td><td>Unit Price</td><td>Price</td></tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                                </div>
+                            </td>
+                        </tr>  
+                        </table>
+                            <table>
+                                <tr>
+    <td colspan="2"><span class="style11">State of Equipment upon arrival<span class="required">*</span></span><br />        
+        <asp:TextBox ID="statEqpTxt" runat="server" TextMode="MultiLine" style="font-size:14px; width:200px;"></asp:TextBox>
+    </td>
+  </tr>
+             <tr>
+    <td colspan="2"><span class="style11">Was Service Delayed<span class="required">*</span></span><br />        
+        <asp:TextBox ID="srvcDlyTxt" runat="server" TextMode="MultiLine" style="font-size:14px; width:200px;"></asp:TextBox>
+    </td>
+  </tr>
+            <tr>
+    <td colspan="2"><span class="style11">Trouble Steps<span class="required">*</span></span><br />        
+        <asp:TextBox ID="trblShtStpsTxt" runat="server" TextMode="MultiLine" style="font-size:14px; width:200px;"></asp:TextBox>
+    </td>
+  </tr>
+
+             <tr>
+    <td>
+        <span class="style11">Is Under Warranty<span class="required">*</span></span><br />
+        <asp:DropDownList ID="wrntyDD" runat="server" Class="select" style="font-size:14px;">
+      </asp:DropDownList>
+       </td>
+                 <td id="warrentyForSection">
+        <span class="style11">Warranty For<span class="required">*</span></span><br />
+        <asp:DropDownList ID="wrntyForDD" runat="server" Class="select" style="font-size:14px;" >
+      </asp:DropDownList>
+       </td>
+      </tr>
+             <tr>
+    <td>
+        <span class="style11">Followup Needed<span class="required">*</span></span><br />
+        <asp:DropDownList ID="followupDD" runat="server" Class="select" style="font-size:14px;">
+      </asp:DropDownList>
+       </td>
+                 <td id="folloupTxtSection">
+        <asp:TextBox ID="followupTxt" runat="server" TextMode="MultiLine" style="font-size:14px; width:200px;"></asp:TextBox>
+       </td>
+      </tr>
+            <tr>
+    <td>
+        <span class="style11">Is Operational<span class="required">*</span></span><br />
+        <asp:DropDownList ID="operationalDD" runat="server" Class="select" style="font-size:14px;" >
+      </asp:DropDownList>
+       </td>
+      </tr>
+            <tr>
+    <td colspan="2">
+        <span class="style11">Full name of person you review the work with<span class="required">*</span> </span><br />        
+        <asp:TextBox ID="ReviewedByTxt" runat="server" style=" font-size:14px"></asp:TextBox>
+    
+       </td>
+      </tr>
+                            </table>
+
+                            <table style="margin-bottom:60px;">                    
+                         <%--<tr>
+                              <td>Signature:<br />
+                                <div id="signature-pad" class="m-signature-pad" style="width: 300px; height: 162px; position:relative;">
+                                    <div class="m-signature-pad--body" style="height: 150px;">
+                                        <canvas style="margin-top: -25px; background-color: #e6e4e4;"></canvas>
+                                    </div>
+                                    <div class="m-signature-pad--footer" style="border: 0;    position: absolute;    top: 9px;    left: -53px;">
+                                        <button class="button clear" data-action="clear">Clear</button>
+                                    </div>
+                                    <asp:HiddenField ID="ImgInformation" runat="server" />
+                                </div>
+                             </td>
+                          </tr>--%>
+                        <tr>
+                            <td>Start Date/Time:<span class="required">*</span><br />
+                                <asp:TextBox ID="SDate" runat="server" style=" font-size:14px"></asp:TextBox>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Arrival Date/Time:<span class="required">*</span><br />
+                                <asp:TextBox ID="ADate" runat="server" style=" font-size:14px"></asp:TextBox>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Completion Date/Time:<span class="required">*</span><br />
+                                <asp:TextBox ID="CDate" runat="server" style=" font-size:14px"></asp:TextBox>
+                            </td>
+                        </tr>
+                        
+                        <tr>
+                           <td colspan="2">
+                                <asp:CheckBox ID="WaterTestedChk" runat="server" Text="Water Tested"/>
+                                <asp:CheckBox ID="FilterReplacedChk" runat="server" Text="Filter Replaced" style="margin-left: 46px;"/>
+                           </td>
+                        </tr>
+                        <tr>
+                            <td>Signed By:<span class="required">*</span><br />
+                                <asp:TextBox ID="SignedBy" runat="server" style=" font-size:14px"></asp:TextBox>
+                            </td>
+                        </tr> 
+                        <tr>
+							<td colspan="2">
+								Signature:<br />
+								<h6>Customer Signature:</h6>
+								<div id="CusSignature"></div>
+								<input type="button" class="e-btn" id="signCusclear" value="Clear Customer Signature" style="width: auto !important; margin-top: 10px;" />
+								<br /> <br />
+								<h6>Technician Signature:</h6>
+								<div id="TechSignature"></div>
+								<input type="button" class="e-btn" id="signTechclear" value="Clear Technician Signature" style="width: auto !important; margin-top: 10px;" />
+								<br /> <br />
+								<script>
+									$(function () {
+									// declaration
+									$("#CusSignature,#TechSignature").ejSignature({ height: "260px", width: "420px", isResponsive: true, strokeWidth: 3 });
+									$("#CusSignature canvas").attr('id', 'CusSignCanv');
+									$("#TechSignature canvas").attr('id', 'TechSignCanv');
+
+									$("#signCusclear").ejButton({
+									size: "normal",
+									showRoundedCorner: true,
+									click: onclearCus
+									});
+
+									function onclearCus() {
+									var sig = $("#CusSignature").ejSignature("instance");
+									sig.clear();
+									}
+
+									$("#signTechclear").ejButton({
+									size: "normal",
+									showRoundedCorner: true,
+									click: onclearTech
+									});
+
+									function onclearTech() {
+									var sig = $("#TechSignature").ejSignature("instance");
+									sig.clear();
+									}
+									});
+								</script>
+							</td>
+						</tr>
+                        <%--<tr>
+                            <td colspan="2">
+                                Signature:<br />
+                                <div class="m-signature-pad--body">
+                                    <h6>Customer Signature:</h6>
+                                    <canvas data-action="canvas1" width="440" style="border: 2px solid #6b6363;"></canvas>      
+                                    <br />
+                                    <h6>Technician Signature:</h6>
+                                    <canvas data-action="canvas2" width="440" style="border: 2px solid #6b6363;"></canvas>
+                                </div>
+                            </td>
+                        </tr>--%>
+                        <tr>
+                            <td colspan="2">
+                                <span class="style11">Hardness Rating</span><br />        
+                                <asp:DropDownList ID="HardnessRatingDropDown" runat="server" Class="select" style="font-size:14px;" >
+                                    <asp:ListItem Text=" " Value=" " />
+                                    <asp:ListItem Text="1" Value="1" />
+                                    <asp:ListItem Text="2" Value="2" />
+                                    <asp:ListItem Text="3" Value="3" />
+                                    <asp:ListItem Text="4" Value="4" />
+                                    <asp:ListItem Text="5" Value="5" />
+                                     <asp:ListItem Text="6" Value="6" />
+                                    <asp:ListItem Text="7" Value="7" />
+                                    <asp:ListItem Text="8" Value="8" />
+                                    <asp:ListItem Text="9" Value="9" />
+                                    <asp:ListItem Text="Over 10" Value="Over 10" />
+                                </asp:DropDownList>
+                            </td>
+                        </tr>
+                        <tr>
+                            
+                           <td colspan="2">
+                                <asp:CheckBox ID="serviceBillableChk" runat="server" Text="Service Billable"/>
+                           </td>
+                        
+                          <td>
+                                <asp:Button ID="Button2" Text="CLOSE CALL" runat="server" Class="btn" OnClick="Button2_Click" data-action="save" style="background-color:green;color:#ffffff;"/>
+                          </td>
+                        </tr>
+                    </table>
+                            <%--<script src="js/signature_pad.umd.js"></script>
+                                <script src="js/Sig_app.js"></script>--%>
+                                <input type="hidden" id="hfSign1" runat="server" />
+                                <input type="hidden" id="hfSign2" runat="server" />
+                            </div>
+                    </div>
+                </td>
+                <td></td>
+            </tr>
+      </table>
+            </div>
+        <div  runat="server" id="succmsg"> 
+        <table>
+            <tr>
+                <td colspan="2"><span class="style15">FB# <asp:Label runat="server" ID="fb1" /></span></td>
+              </tr>
+              <tr>
+  	            <td colspan="2"><font color="#FF0000"><b><asp:Label runat="server" ID="msg1" ></asp:Label></b></font></td>
+              </tr>
+        </table>
+            </div>
+        <div runat="server" id="NSR">
+            <table>
+                <tr>
+                    <td colspan="2"><span class="style15">FB# <asp:Label runat="server" ID="fb2" /></span></td>
+                  </tr>
+                <tr>
+                    <td><h3 style="font-size:15px; color:#b33838;margin: 0px;">No Service Required</h3></td>
+                </tr>
+                <tr>
+                    <td>                        
+                        <span class="style11">Reason<span class="required">*</span></span><br />
+                        <asp:DropDownList ID="Reasions" runat="server" Class="select" style="font-size:14px;" >
+                      </asp:DropDownList>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="style11">Comments</span><br />
+                        <asp:TextBox ID="nsrmsg" runat="server" TextMode="MultiLine" style="font-size:14px; width: 258px; height: 107px;"></asp:TextBox>
+                    </td>
+                </tr>
+                        <tr>
+                          <td>
+                                <asp:Button ID="Button3" Text="SUBMIT" runat="server" Class="btn" OnClick="Button3_Click" style="background-color:orange;"/>
+                          </td>
+                    </tr>
+            </table>
+        </div>
+    </form>
+</body>
+    
+</html>
